@@ -7,8 +7,7 @@ const initState = {
 const reducer = (state=initState, action) => {
   const newState = Object.assign({}, state)
 
-  switch (action.type) {
-   
+  switch(action.type) {
     case AUTHENTICATED:
       newState.user = action.user
       break
