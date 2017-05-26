@@ -5,7 +5,7 @@ const initState = {
 }
 
 const reducer = (state=initState, action) => {
-  let newState = Object.assign({}, state)
+  const newState = Object.assign({}, state)
 
   switch (action.type) {
    

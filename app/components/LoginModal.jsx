@@ -1,29 +1,28 @@
 import React from 'react'
 import { Link } from 'react-router'
 import { Button, Modal, Component } from 'react-bootstrap'
+import { browserHistory } from 'react-router'
 import Login from './Login'
 
-
-
 export default class extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
-    this.state = { show:true }
+    this.state = { show: true }
     this.hideModal = this.hideModal.bind(this)
   }
 
   hideModal() {
-    this.setState( { show: false } );
-    history.back()
+    this.setState({show: false})
+    browserHistory.goBack()
   }
 
-  render () {
-    return ( 
+  render() {
+    return (
       <div>
         <Modal
           show={this.state.show}
           onHide={this.hideModal}
-          bsSize="large" 
+          bsSize="large"
           aria-labelledby="contained-modal-title-lg"
         >
           <Modal.Header closeButton>
@@ -37,6 +36,6 @@ export default class extends React.Component {
           </Modal.Footer>
         </Modal>
       </div>
-    );
+    )
   }
 }
