@@ -22,11 +22,6 @@ describe('<WhoAmI/>', () => {
   it('greets the user', () => {
     expect(root.text()).to.contain(user.email)
   })
-
-  it('calls props.logout when logout is tapped', () => {
-    root.find('button.logout').simulate('click')
-    expect(logout).to.have.been.called
-  })
 })
 
 describe("<WhoAmI/>'s connection", () => {
