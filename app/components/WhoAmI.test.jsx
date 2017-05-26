@@ -19,9 +19,6 @@ describe('<WhoAmI/>', () => {
     root = shallow(<WhoAmI user={user} logout={logout}/>)
   )
 
-  it('greets the user', () => {
-    expect(root.text()).to.contain(user.email)
-  })
 })
 
 describe("<WhoAmI/>'s connection", () => {
