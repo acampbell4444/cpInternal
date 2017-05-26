@@ -1,8 +1,74 @@
+#homeBody {
+  background-image: url('/images/palmTreeAndHammock.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size:  cover;
+  background-color: #999;
+  position: fixed;
+  top: 50px;
+  left: 0;
+  min-height: 100%;
+  min-width: 100%;
+}
+
+.homeContent {
+	margin: 15% auto;
+	color: gold;
+	text-align: center;
+	margin-bottom: 32px;
+}
+
+.homeBullets {
+	margin: 20px 0;
+	font-size: 20px
+}
+/*animations*/
+
 #homeTitle{
+  color : cornsilk;
   font-size: 50px;
   -webkit-animation: tracking-in-contract 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
   -moz-animation: tracking-in-contract 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
   animation: tracking-in-contract 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 }
 
+#midInit {
+  -webkit-animation: focus-in-expand-fwd 2.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  -moz-animation: focus-in-expand-fwd 2.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: focus-in-expand-fwd 2.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+#hmBullet1 {
+  -webkit-animation: slide-in-top 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  -moz-animation: slide-in-top 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: slide-in-top 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+#hmBullet2 {
+  -webkit-animation: slide-in-left 2.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  -moz-animation: slide-in-left 2.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: slide-in-left 2.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+#hmBullet3 {
+  -webkit-animation: slide-in-right 2.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  -moz-animation: slide-in-right 2.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: slide-in-right 2.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+#hmBullet4 {
+  -webkit-animation: slide-in-bottom 2.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  -moz-animation: slide-in-bottom 2.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: slide-in-bottom 2.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
 @-webkit-keyframes tracking-in-contract{0%{letter-spacing:1em;opacity:0}40%{opacity:.6}100%{letter-spacing:normal;opacity:1}}@keyframes tracking-in-contract{0%{letter-spacing:1em;opacity:0}40%{opacity:.6}100%{letter-spacing:normal;opacity:1}}
+@-webkit-keyframes focus-in-expand-fwd{0%{letter-spacing:-.5em;-webkit-transform:translateZ(-800px);transform:translateZ(-800px);-webkit-filter:blur(12px);filter:blur(12px);opacity:0}100%{-webkit-transform:translateZ(0);transform:translateZ(0);-webkit-filter:blur(0);filter:blur(0);opacity:1}}@keyframes focus-in-expand-fwd{0%{letter-spacing:-.5em;-webkit-transform:translateZ(-800px);transform:translateZ(-800px);-webkit-filter:blur(12px);filter:blur(12px);opacity:0}100%{-webkit-transform:translateZ(0);transform:translateZ(0);-webkit-filter:blur(0);filter:blur(0);opacity:1}}
+@-webkit-keyframes slide-in-top{0%{-webkit-transform:translateY(-1000px);transform:translateY(-1000px);opacity:0}100%{-webkit-transform:translateY(0);transform:translateY(0);opacity:1}}@keyframes slide-in-top{0%{-webkit-transform:translateY(-1000px);transform:translateY(-1000px);opacity:0}100%{-webkit-transform:translateY(0);transform:translateY(0);opacity:1}}
+@-webkit-keyframes slide-in-left{0%{-webkit-transform:translateX(-1000px);transform:translateX(-1000px);opacity:0}100%{-webkit-transform:translateX(0);transform:translateX(0);opacity:1}}@keyframes slide-in-left{0%{-webkit-transform:translateX(-1000px);transform:translateX(-1000px);opacity:0}100%{-webkit-transform:translateX(0);transform:translateX(0);opacity:1}}
+@-webkit-keyframes slide-in-right{0%{-webkit-transform:translateX(1000px);transform:translateX(1000px);opacity:0}100%{-webkit-transform:translateX(0);transform:translateX(0);opacity:1}}@keyframes slide-in-right{0%{-webkit-transform:translateX(1000px);transform:translateX(1000px);opacity:0}100%{-webkit-transform:translateX(0);transform:translateX(0);opacity:1}}
+@-webkit-keyframes slide-in-bottom{0%{-webkit-transform:translateY(1000px);transform:translateY(1000px);opacity:0}100%{-webkit-transform:translateY(0);transform:translateY(0);opacity:1}}@keyframes slide-in-bottom{0%{-webkit-transform:translateY(1000px);transform:translateY(1000px);opacity:0}100%{-webkit-transform:translateY(0);transform:translateY(0);opacity:1}}
+/*end animations*/

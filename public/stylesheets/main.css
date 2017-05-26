@@ -45,3 +45,7 @@ table {
 }
 
 /*CSS Resets End*/
+
+.navbar {
+    margin-bottom: 0;
+}
