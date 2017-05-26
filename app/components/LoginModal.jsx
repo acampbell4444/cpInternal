@@ -1,7 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router'
+import { browserHistory, Link } from 'react-router'
 import { Button, Modal, Component } from 'react-bootstrap'
-import { browserHistory } from 'react-router'
 import Login from './Login'
 
 export default class extends React.Component {
