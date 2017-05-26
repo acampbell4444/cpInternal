@@ -9,7 +9,7 @@ import Jokes from './components/Jokes'
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
 import NotFound from './components/NotFound'
-import NavigationalComponent from './components/NavigationalComponent'
+import HomeNavigationalComponent from './components/HomeNavigationalComponent'
 
 import HomeContainer from './containers/HomeContainer'
 
@@ -18,7 +18,7 @@ const BlogFolio = connect(
 )(
   ({ user, children }) =>
     <div>
-      <NavigationalComponent />
+      <HomeNavigationalComponent />
       {children}
     </div>
 )
