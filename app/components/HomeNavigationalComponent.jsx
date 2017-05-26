@@ -14,12 +14,7 @@ export default function HomeNavigationalComponent() {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            <NavDropdown eventKey={1} title="Blog" id="basic-nav-dropdown">
-              <MenuItem eventKey={1.1}>Adventure Blog</MenuItem>
-              <MenuItem eventKey={1.2}>Tech Blog</MenuItem>
-              <MenuItem divider />
-              <MenuItem eventKey={1.3}>All Blogs</MenuItem>
-            </NavDropdown>
+            <NavItem eventKey={1} href="/blogs">Blogs</NavItem>
             <NavDropdown eventKey={2} title="Tech Creations" id="basic-nav-dropdown">
               <MenuItem eventKey={2.1}>Random Widgets</MenuItem>
               <MenuItem eventKey={2.2}>Games</MenuItem>
@@ -27,8 +22,8 @@ export default function HomeNavigationalComponent() {
             </NavDropdown>
           </Nav>
           <Nav pullRight>
-            <NavItem eventKey={2} href="#">Link1</NavItem>
-            <NavItem eventKey={3} href="#">Link2</NavItem>
+            <NavItem eventKey={3} href="#">Link1</NavItem>
+            <NavItem eventKey={4} href="#">Link2</NavItem>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
