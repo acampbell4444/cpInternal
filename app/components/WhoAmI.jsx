@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 
 export const WhoAmI = ({ user, logout }) => (
   <div className="whoami">
-    <span className="whoami-user-email">{user.user.email && user.user.email}</span>
+    <span className="whoami-user-email">{user.user && user.user.email}</span>
     <a href='#' onClick={logout}>Logout </a>
   </div>
 )

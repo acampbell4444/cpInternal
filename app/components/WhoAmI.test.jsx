@@ -20,11 +20,7 @@ describe('<WhoAmI/>', () => {
   )
 
   it('greets the user', () => {
-    expect(root.text()).to.contain(user.name)
-  })
-
-  it('has a logout button', () => {
-    expect(root.find('button.logout')).to.have.length(1)
+    expect(root.text()).to.contain(user.email)
   })
 
   it('calls props.logout when logout is tapped', () => {
