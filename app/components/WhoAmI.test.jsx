@@ -18,7 +18,6 @@ describe('<WhoAmI/>', () => {
   beforeEach('render the root', () =>
     root = shallow(<WhoAmI user={user} logout={logout}/>)
   )
-
 })
 
 describe("<WhoAmI/>'s connection", () => {
