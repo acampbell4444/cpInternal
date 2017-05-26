@@ -1,9 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 export const WhoAmI = ({ user, logout }) => (
   <div className="whoami">
-    <span className="whoami-user-name">{user && user.name}</span>
-    <button className="logout" onClick={logout}>Logout</button>
+    <span className="whoami-user-email">{user.user.email && user.user.email}</span>
+    <a href='#' onClick={logout}>Logout </a>
   </div>
 )
 
