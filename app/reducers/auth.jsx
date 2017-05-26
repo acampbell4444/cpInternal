@@ -7,14 +7,15 @@ const initState = {
 const reducer = (state=initState, action) => {
   const newState = Object.assign({}, state)
 
-  switch(action.type) {
-    case AUTHENTICATED:
-      newState.user = action.user
-      break
+  switch (action.type) {
+  case AUTHENTICATED:
+    newState.user = action.user
+    break
 
-    default:
-      return state
+  default:
+    return state
   }
+  
   return newState
 }
 
