@@ -11,7 +11,8 @@ import NotFound from './components/NotFound'
 import HomeNavigationalComponent from './components/HomeNavigationalComponent'
 
 import HomeContainer from './containers/HomeContainer'
-import LoginModal from './components/LoginModal'
+import LoginModalContainer from './containers/LoginModalContainer'
+import SignUpModal from './components/SignUpModal'
 
 const BlogFolio = connect(
   ({ auth }) => ({ user: auth })
@@ -29,7 +30,8 @@ render(
       <Route path="/" component={BlogFolio}>
         <IndexRedirect to="/home" />
         <Route path="/home" component={HomeContainer} />
-        <Route path='/showLoginModal' component={LoginModal} />
+        <Route path='/showLoginModal' component={LoginModalContainer} />
+        <Route path='/showSignUpModal' component={SignUpModal} />
       </Route>
       <Route path='*' component={NotFound} />
     </Router>

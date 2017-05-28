@@ -24,7 +24,7 @@ export default function HomeNavigationalComponent({user}) {
           </Nav>
           <Nav pullRight>
             { !user.user&&(<NavItem eventKey={3}> <Link to='/showLoginModal'><p>Login</p> </Link></NavItem>) }
-            { !user.user&&(<NavItem eventKey={4}><Link to='/showSignUpModal'><p>Sign Up</p> </Link></NavItem>) }
+            { !user.user&&(<NavItem eventKey={4}> <Link to='/showSignUpModal'><p>Sign Up</p> </Link></NavItem>) }
             { user.user&&(<NavItem eventKey={5}> <WhoAmI user={user.user}/></NavItem>) }
           </Nav>
         </Navbar.Collapse>

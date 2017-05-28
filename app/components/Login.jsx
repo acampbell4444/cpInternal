@@ -1,4 +1,6 @@
 import React from 'react'
+import {login} from 'APP/app/reducers/auth'
+import {connect} from 'react-redux'
 
 export const Login = ({ login }) => (
   <form onSubmit={evt => {
@@ -7,12 +9,9 @@ export const Login = ({ login }) => (
   } }>
     <input name="username" />
     <input name="password" type="password" />
-    <input type="submit" value="Login" />
+    <input type="submit" value="Login" className='btn btn-success btn-xs' />
   </form>
 )
-
-import {login} from 'APP/app/reducers/auth'
-import {connect} from 'react-redux'
 
 export default connect(
   state => ({}),
