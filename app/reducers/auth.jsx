@@ -1,10 +1,9 @@
 import axios from 'axios'
-import { browserHistory } from 'react-router'
-import store from '../store'
 
 const initState = {
   user: {},
-  loginFail: false
+  loginFail: false,
+  loginDidSucceed: false
 }
 
 const reducer = (state=initState, action) => {
@@ -17,6 +16,10 @@ const reducer = (state=initState, action) => {
 
   case LOGINFAIL:
     newState.loginFail = action.bool
+    break
+
+  case LOGIN_DID_SUCCEED:
+    newState.loginDidSucceed = action.bool
     break
 
   default:
@@ -35,15 +38,18 @@ export const loginFail = (bool) => ({
   type: LOGINFAIL, bool
 })
 
+const LOGIN_DID_SUCCEED = 'LOGIN_DID_SUCCEED'
+export const loginDidSucceed = (bool) => ({
+  type: LOGIN_DID_SUCCEED, bool
+})
+
 export const login = (username, password) =>
   dispatch =>
     axios.post('/api/auth/login/local',
       {username, password})
-      .then(() => dispatch(whoami()))
       .then(() => {
-        const actualName = store.getState().auth.user.name
-        window.alert('Welcome. ' + actualName + ' has logged in Successfully.')  // change to better looking alert
-        browserHistory.goBack()
+        dispatch(whoami())
+        dispatch(loginDidSucceed(true))
       })
       .catch(() => {
         dispatch(loginFail(true))
@@ -53,7 +59,10 @@ export const login = (username, password) =>
 export const logout = () =>
   dispatch =>
     axios.post('/api/auth/logout')
-      .then(() => dispatch(whoami()))
+      .then(() => {
+        dispatch(loginDidSucceed(false))
+        dispatch(whoami())
+      })
       .catch(() => dispatch(whoami()))
 
 export const whoami = () =>

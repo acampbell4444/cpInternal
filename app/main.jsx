@@ -14,6 +14,8 @@ import HomeContainer from './containers/HomeContainer'
 import LoginModalContainer from './containers/LoginModalContainer'
 import SignUpModal from './components/SignUpModal'
 
+import { whoami } from './reducers/auth'
+
 const BlogFolio = connect(
   ({ auth }) => ({ user: auth })
 )(
@@ -24,12 +26,14 @@ const BlogFolio = connect(
     </div>
 )
 
+const onHomeEnter = () => store.dispatch(whoami())
+
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={BlogFolio}>
         <IndexRedirect to="/home" />
-        <Route path="/home" component={HomeContainer} />
+        <Route path="/home" component={HomeContainer} onEnter={onHomeEnter}/>
         <Route path='/showLoginModal' component={LoginModalContainer} />
         <Route path='/showSignUpModal' component={SignUpModal} />
       </Route>

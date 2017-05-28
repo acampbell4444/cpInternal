@@ -23,7 +23,6 @@ export default class extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <div>
         <Modal
@@ -59,6 +58,16 @@ export default class extends React.Component {
                     <p className='center'>
                     <span className="glyphicon glyphicon-exclamation-sign center" aria-hidden="true"></span>
                     {' '}Incorrect Login name or Password </p>
+                </div>
+              )
+             }
+             {
+              this.props.loginDidSucceed&&(
+                <div className="alert alert-success" onClick={this.hideModal}>
+                  <a className="close" aria-label="close">&times;</a>
+                    <p className='center'>
+                    <span className="glyphicon glyphicon-exclamation-sign center" aria-hidden="true"></span>
+                    {' '} Welcome {' ' + this.props.userName + '. '} You logged in Successfully. </p>
                 </div>
               )
              }

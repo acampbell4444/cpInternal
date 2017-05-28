@@ -15,7 +15,7 @@ describe('<Login />', () => {
   )
 
   it('shows a login form', () => {
-    expect(root.find('input[name="username"]')).to.have.length(1)
+    expect(root.find('input[name="userEmail"]')).to.have.length(1)
     expect(root.find('input[name="password"]')).to.have.length(1)
   })
 
@@ -36,7 +36,7 @@ describe('<Login />', () => {
     const submitEvent = {
       preventDefault: spy(),
       target: {
-        username: {value: 'bones@example.com'},
+        userEmail: {value: 'bones@example.com'},
         password: {value: '12345'},
       }
     }
@@ -49,7 +49,7 @@ describe('<Login />', () => {
 
     it('calls props.login with credentials', () => {
       expect(login).to.have.been.calledWith(
-        submitEvent.target.username.value,
+        submitEvent.target.userEmail.value,
         submitEvent.target.password.value,
       )
     })

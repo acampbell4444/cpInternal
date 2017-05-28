@@ -2,6 +2,7 @@ import React from 'react'
 import { browserHistory, Link } from 'react-router'
 import { Button, Modal, Component } from 'react-bootstrap'
 import Login from './Login'
+import UserSignUpContainer from '../containers/UserSignUpContainer'
 
 export default class extends React.Component {
   constructor(props) {
@@ -26,11 +27,13 @@ export default class extends React.Component {
         >
           <Modal.Header>
             <Modal.Title>
-              Sign Up
+              <div className='center'>Sign Up</div>
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            Sign Up Shit
+            <div className='center'>
+              <UserSignUpContainer />
+            </div>
           </Modal.Body>
           <Modal.Footer>
             <Button className='button btn btn-danger' onClick={this.hideModal}>Close</Button>
