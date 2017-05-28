@@ -1,8 +1,9 @@
 import React from 'react'
 import {Link} from 'react-router'
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Component, FormGroup, FormControl, Button } from 'react-bootstrap'
+import WhoAmI from './WhoAmI'
 
-export default function HomeNavigationalComponent() {
+export default function HomeNavigationalComponent({user}) {
   return (
     <div>
       <Navbar inverse collapseOnSelect>
@@ -22,8 +23,9 @@ export default function HomeNavigationalComponent() {
             </NavDropdown>
           </Nav>
           <Nav pullRight>
-            <NavItem eventKey={3} href="#">Link1</NavItem>
-            <NavItem eventKey={4} href="#">Link2</NavItem>
+            { !user.user&&(<NavItem eventKey={3}> <Link to='/showLoginModal'><p>Login</p> </Link></NavItem>) }
+            { !user.user&&(<NavItem eventKey={4}> <Link to='/showSignUpModal'><p>Sign Up</p> </Link></NavItem>) }
+            { user.user&&(<NavItem eventKey={5}> <WhoAmI user={user.user}/></NavItem>) }
           </Nav>
         </Navbar.Collapse>
       </Navbar>
