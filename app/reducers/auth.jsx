@@ -1,4 +1,6 @@
 import axios from 'axios'
+import { browserHistory } from 'react-router'
+import store from '../store'
 
 const initState = {
   user: {},
@@ -38,6 +40,11 @@ export const login = (username, password) =>
     axios.post('/api/auth/login/local',
       {username, password})
       .then(() => dispatch(whoami()))
+      .then(() => {
+        const actualName = store.getState().auth.user.name
+        window.alert('Welcome. ' + actualName + ' has logged in Successfully.')  // change to better looking alert
+        browserHistory.goBack()
+      })
       .catch(() => {
         dispatch(loginFail(true))
         dispatch(whoami())
