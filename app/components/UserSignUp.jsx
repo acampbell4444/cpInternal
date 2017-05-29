@@ -3,45 +3,68 @@ import { Field, reduxForm } from 'redux-form'
 import { required, maxLength15, email, minValue18 } from '../utilities/customValidations'
 
 const SignUpForm = (props) => {
-  const { handleSubmit, pristine, reset, submitting, valid, firstPassword } = props
+  const { handleSubmit, pristine, reset, submitting, valid, firstPassword, pwdMatch, noRptUserName, noRptUserEmail, didSignUpSucceed, closeSuccessBoxAndModal } = props
 
-  const passwordMatch = value => value !== firstPassword ? `Passwords Do Not Match` : undefined
+  // local, custom validations
+  const passwordMatch = value => pwdMatch() === value ? undefined : 'Your Paswords Do Not Match'
+  const noRepeatUserName = value => noRptUserName().includes(value) ? 'That User Name Already Exists' : undefined
+  const noRepeatUserEmail = value => noRptUserEmail().includes(value) ? 'That User Email Already Exists' : undefined
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Field name="username" type="text"
-        component={renderField} label="Name"
-        validate={ [maxLength15, required] }
-      />
-      <Field name="email" type="email"
-        component={ renderField } label="Email" type='email'
-        validate={ [email, required] }
-      />
-      <Field name="age" type="number"
-        component={ renderField } label="Age"
-        validate={ [required, minValue18] }
-      />
-      <Field name="createPassword" type="password"
-        component={ renderField } label="Create a Password"
-        validate={ [required] }
-      />
-      <Field name="passwordRepeat" type="password"
-        component={ renderField } label="Re-Enter Your Password"
-        validate={ [required, passwordMatch] }
-      />
+    <div>
+      <form onSubmit={handleSubmit}>
+        <Field name="username" type="text"
+          component={renderField} label="Name"
+          validate={ [maxLength15, required, noRepeatUserName] }
+        />
+        <Field name="email" type="email"
+          component={ renderField } label="Email" type='email'
+          validate={ [email, required, noRepeatUserEmail] }
+        />
+        <Field name="age" type="number"
+          component={ renderField } label="Age"
+          validate={ [required, minValue18] }
+        />
+        <Field name="createPassword" type="password"
+          component={ renderField } label="Create a Password"
+          validate={ [required] }
+        />
+        <Field name="passwordRepeat" type="password"
+          component={ renderField } label="Confirm Your Password"
+          validate={ [required, passwordMatch] }
+        />
+        <div className="userSignUpButtons">
+          <button className='btn btn-success' type="submit" disabled={!valid}>Submit</button>
+          <button className='btn btn-warning' type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
+        </div>
+      </form>
       <div>
-        <button className='btn btn-success' type="submit" disabled={!valid}>Submit</button>
-        <button className='btn btn-warning' type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
+        {
+          didSignUpSucceed&&(
+            <div className='signUpSuccess'>
+              <div className="alert alert-success" onClick={closeSuccessBoxAndModal}>
+                <a className="close" aria-label="close">&times;</a>
+                <p className='center'>
+                  <span className="glyphicon glyphicon-exclamation-sign center" aria-hidden="true"></span>
+                  {' '} You Have Signed Up Successfully. Log In with your Email and Password. </p>
+              </div>
+            </div>
+          )
+        }
       </div>
-    </form>
+    </div>
   )
 }
 
 const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
   <div>
-    <div>
-      <input {...input} placeholder={label} type={type}/>
-      {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+    <div className='row'>
+      <div className='col-xs-6 userSignUpLabel'>{label}</div>
+      <div className='col-lg-6 col-xs-6'><input {...input} placeholder={label} type={type}/>
+        <div className='userSignUpErrors'>
+          {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+        </div>
+      </div>
     </div>
   </div>
 )

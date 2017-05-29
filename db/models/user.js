@@ -2,16 +2,26 @@
 
 // bcrypt docs: https://www.npmjs.com/package/bcrypt
 const bcrypt = require('bcryptjs')
-    , {STRING, VIRTUAL} = require('sequelize')
+    , {STRING, VIRTUAL, INTEGER} = require('sequelize')
 
 module.exports = db => db.define('users', {
-  name: STRING,
+  name: {
+    type: STRING,
+    unique: true
+  },
+  age: {
+    type: INTEGER,
+    validate: {
+      min: 18
+    }
+  },
   email: {
     type: STRING,
     validate: {
       isEmail: true,
       notEmpty: true,
-    }
+    },
+    unique: true
   },
 
   // We support oauth, so users may or may not have passwords.

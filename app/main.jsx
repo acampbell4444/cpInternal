@@ -12,9 +12,10 @@ import HomeNavigationalComponent from './components/HomeNavigationalComponent'
 
 import HomeContainer from './containers/HomeContainer'
 import LoginModalContainer from './containers/LoginModalContainer'
-import SignUpModal from './components/SignUpModal'
+import SignUpModalContainer from './containers/SignUpModalContainer'
 
 import { whoami } from './reducers/auth'
+import { fetchAllUsers } from './reducers/user'
 
 const BlogFolio = connect(
   ({ auth }) => ({ user: auth })
@@ -27,15 +28,16 @@ const BlogFolio = connect(
 )
 
 const onHomeEnter = () => store.dispatch(whoami())
+const onUserSignUpEnter = () => store.dispatch(fetchAllUsers())
 
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={BlogFolio}>
         <IndexRedirect to="/home" />
-        <Route path="/home" component={HomeContainer} onEnter={onHomeEnter}/>
+        <Route path="/home" component={HomeContainer} onEnter={onHomeEnter} />
         <Route path='/showLoginModal' component={LoginModalContainer} />
-        <Route path='/showSignUpModal' component={SignUpModal} />
+        <Route path='/showSignUpModal' component={SignUpModalContainer} onEnter={onUserSignUpEnter} />
       </Route>
       <Route path='*' component={NotFound} />
     </Router>

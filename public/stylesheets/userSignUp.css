@@ -1,0 +1,22 @@
+input[name="username"], input[name="email"], input[name="age"], input[name="createPassword"], input[name="passwordRepeat"]  {
+	width: 80%;
+	margin: 1%;
+}
+
+.userSignUpErrors {
+	color: red;
+	font-size: 12px;
+}
+
+.userSignUpButtons {
+	margin-top: 2%;
+}
+
+.userSignUpLabel {
+  text-align: right;
+  font-style: bold;
+}
+
+.signUpSuccess {
+	margin: 1%;
+}

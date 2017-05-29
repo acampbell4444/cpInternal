@@ -14,6 +14,7 @@ export default class extends React.Component {
   hideModal() {
     this.setState({show: false})
     browserHistory.goBack()
+    this.props.changeLoginSuccessState()
   }
 
   render() {
@@ -32,7 +33,7 @@ export default class extends React.Component {
           </Modal.Header>
           <Modal.Body>
             <div className='center'>
-              <UserSignUpContainer />
+              <UserSignUpContainer closeSuccessBox={this.hideModal} />
             </div>
           </Modal.Body>
           <Modal.Footer>
