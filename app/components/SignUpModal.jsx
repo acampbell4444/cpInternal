@@ -13,8 +13,8 @@ export default class extends React.Component {
 
   hideModal() {
     this.setState({show: false})
-    browserHistory.goBack()
     this.props.changeLoginSuccessState()
+    browserHistory.goBack()
   }
 
   render() {

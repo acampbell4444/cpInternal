@@ -34,7 +34,7 @@ const SignUpForm = (props) => {
           validate={ [required, passwordMatch] }
         />
         <div className="userSignUpButtons">
-          <button className='btn btn-success' type="submit" disabled={!valid}>Submit</button>
+          <button className='btn btn-success' type="submit" disabled={!valid || didSignUpSucceed}>Submit</button>
           <button className='btn btn-warning' type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
         </div>
       </form>
