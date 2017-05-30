@@ -2,9 +2,7 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { required, maxLength15, email, minValue18 } from '../utilities/customValidations'
 
-const SignUpForm = (props) => {
-  const { handleSubmit, pristine, reset, submitting, valid, firstPassword, pwdMatch, noRptUserName, noRptUserEmail, didSignUpSucceed, closeSuccessBoxAndModal } = props
-
+const SignUpForm = ({ handleSubmit, pristine, reset, submitting, valid, firstPassword, pwdMatch, noRptUserName, noRptUserEmail, didSignUpSucceed, closeSuccessBoxAndModal }) => {
   // local, custom validations
   const passwordMatch = value => pwdMatch() === value ? undefined : 'Your Paswords Do Not Match'
   const noRepeatUserName = value => noRptUserName().includes(value) ? 'That User Name Already Exists' : undefined

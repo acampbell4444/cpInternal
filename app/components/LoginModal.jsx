@@ -46,7 +46,7 @@ export default class extends React.Component {
               onClick={ e => { this.props.loginFail(false); this.setState({ errorAlertShow: true }) } }
               className='center'
             >
-              <Login/>
+              <Login userEmailList={this.props.userEmailList}/>
             </div>
           </Modal.Body>
           <Modal.Footer>
@@ -57,7 +57,7 @@ export default class extends React.Component {
                   <a className="close" aria-label="close">&times;</a>
                     <p className='center'>
                     <span className="glyphicon glyphicon-exclamation-sign center" aria-hidden="true"></span>
-                    {' '}Incorrect Login name or Password </p>
+                    {' '}Incorrect Password </p>
                 </div>
               )
              }

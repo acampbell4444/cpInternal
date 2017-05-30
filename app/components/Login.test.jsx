@@ -15,18 +15,12 @@ describe('<Login />', () => {
   )
 
   it('shows a login form', () => {
-    expect(root.find('input[name="userEmail"]')).to.have.length(1)
-    expect(root.find('input[name="password"]')).to.have.length(1)
-  })
-
-  it('shows a password field', () => {
-    const pw = root.find('input[name="password"]')
-    expect(pw).to.have.length(1)
-    expect(pw.at(0)).to.have.attr('type').equals('password')
+    expect(root.find('Field[name="userEmail"]')).to.have.length(1)
+    expect(root.find('Field[name="password"]')).to.have.length(1)
   })
 
   it('has a login button', () => {
-    const submit = root.find('input[type="submit"]')
+    const submit = root.find('button[type="submit"]')
     expect(submit).to.have.length(1)
   })
 

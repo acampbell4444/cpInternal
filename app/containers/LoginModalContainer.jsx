@@ -6,7 +6,8 @@ import { loginFail } from '../reducers/auth'
 const mapStateToProps = state => (
   { didLoginFail: state.auth.loginFail,
     loginDidSucceed: state.auth.loginDidSucceed,
-    userName: state.auth.user.name
+    userName: state.auth.user.name,
+    userEmailList: state.user.userList.map(obj => obj.email)
   }
 )
 

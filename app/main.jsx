@@ -29,6 +29,7 @@ const BlogFolio = connect(
 
 const onHomeEnter = () => store.dispatch(whoami())
 const onUserSignUpEnter = () => store.dispatch(fetchAllUsers())
+const onLoginEnter = () => store.dispatch(fetchAllUsers())
 
 render(
   <Provider store={store}>
@@ -36,7 +37,7 @@ render(
       <Route path="/" component={BlogFolio}>
         <IndexRedirect to="/home" />
         <Route path="/home" component={HomeContainer} onEnter={onHomeEnter} />
-        <Route path='/showLoginModal' component={LoginModalContainer} />
+        <Route path='/showLoginModal' component={LoginModalContainer} onEnter={onLoginEnter}/>
         <Route path='/showSignUpModal' component={SignUpModalContainer} onEnter={onUserSignUpEnter} />
       </Route>
       <Route path='*' component={NotFound} />
