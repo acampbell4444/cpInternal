@@ -30,7 +30,7 @@
 /*animations*/
 
 #homeTitle{
-  color : cornsilk;
+  color : goldenrod;
   font-size: 50px;
   -webkit-animation: tracking-in-contract 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
   -moz-animation: tracking-in-contract 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;

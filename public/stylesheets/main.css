@@ -59,6 +59,11 @@ table {
 	margin: 0 auto;
 }
 
+#userName {
+	color: red;
+	margin-right: 1%;
+}
+
 
 
 

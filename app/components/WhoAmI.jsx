@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router'
+import { NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
 
 export const WhoAmI = ({ user, logout }) => (
-  <div className="whoami">
-    <span className="whoami-user-email">{user.user && user.user.name}</span>
-    <a href='#' onClick={logout}>Logout </a>
-  </div>
+  <NavDropdown eventKey={5} title={user.user && user.user.name + '  '} id="basic-nav-dropdown">
+    <MenuItem eventKey={5.1}>Manage Your Account</MenuItem>
+    <MenuItem eventKey={5.2} onSelect={logout}> <span>LogOut</span> </MenuItem>
+  </NavDropdown>
 )
 
 import {logout} from 'APP/app/reducers/auth'

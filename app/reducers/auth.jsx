@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { browserHistory } from 'react-router'
 
 const initState = {
   user: {},
@@ -62,6 +63,7 @@ export const logout = () =>
       .then(() => {
         dispatch(loginDidSucceed(false))
         dispatch(whoami())
+        browserHistory.push('/home')
       })
       .catch(() => dispatch(whoami()))
 

@@ -1,7 +1,8 @@
 import React from 'react'
-import {Link} from 'react-router'
+import { Link, browserHistory } from 'react-router'
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Component, FormGroup, FormControl, Button } from 'react-bootstrap'
 import WhoAmI from './WhoAmI'
+import { logout } from '../reducers/auth'
 
 export default function HomeNavigationalComponent({user}) {
   return (
@@ -23,9 +24,9 @@ export default function HomeNavigationalComponent({user}) {
             </NavDropdown>
           </Nav>
           <Nav pullRight>
-            { !user.user&&(<NavItem eventKey={3}> <Link to='/showLoginModal'><p>Login</p> </Link></NavItem>) }
-            { !user.user&&(<NavItem eventKey={4}> <Link to='/showSignUpModal'><p>Sign Up</p> </Link></NavItem>) }
-            { user.user&&(<NavItem eventKey={5}> <WhoAmI user={user.user}/></NavItem>) }
+            { !user.user&&(<NavItem eventKey={3} onSelect={e => browserHistory.push('/showLoginModal')} > <p>Login</p> </NavItem>) }
+            { !user.user&&(<NavItem eventKey={4} onSelect={e => browserHistory.push('/showSignUpModal')}> <p>Sign Up</p> </NavItem>) }
+            { user.user&&(<WhoAmI user={user.user} />) }
           </Nav>
         </Navbar.Collapse>
       </Navbar>
