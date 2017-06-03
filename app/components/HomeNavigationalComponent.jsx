@@ -19,13 +19,16 @@ export default function HomeNavigationalComponent({user}) {
             <NavItem eventKey={1} href="/blogs">Blogs</NavItem>
             <NavDropdown eventKey={2} title="Tech Creations" id="basic-nav-dropdown">
               <MenuItem eventKey={2.1}>Random Widgets</MenuItem>
-              <MenuItem eventKey={2.2}>Games</MenuItem>
+              <NavDropdown eventKey={3} title="Games" id="games-dropdown">
+                <MenuItem eventKey={3.1} onSelect={e => browserHistory.push('/conways')}>Conway's Game of Life w/React & Redux</MenuItem>
+              </NavDropdown>
+
               <MenuItem eventKey={2.3}>Tech Demos</MenuItem>
             </NavDropdown>
           </Nav>
           <Nav pullRight>
-            { !user.user&&(<NavItem eventKey={3} onSelect={e => browserHistory.push('/showLoginModal')} > <p>Login</p> </NavItem>) }
-            { !user.user&&(<NavItem eventKey={4} onSelect={e => browserHistory.push('/showSignUpModal')}> <p>Sign Up</p> </NavItem>) }
+            { !user.user&&(<NavItem eventKey={4} onSelect={e => browserHistory.push('/showLoginModal')} > <p>Login</p> </NavItem>) }
+            { !user.user&&(<NavItem eventKey={5} onSelect={e => browserHistory.push('/showSignUpModal')}> <p>Sign Up</p> </NavItem>) }
             { user.user&&(<WhoAmI user={user.user} />) }
           </Nav>
         </Navbar.Collapse>

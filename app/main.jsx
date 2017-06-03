@@ -13,6 +13,7 @@ import HomeNavigationalComponent from './components/HomeNavigationalComponent'
 import HomeContainer from './containers/HomeContainer'
 import LoginModalContainer from './containers/LoginModalContainer'
 import SignUpModalContainer from './containers/SignUpModalContainer'
+import ConwaysContainer from './containers/ConwaysContainer'
 
 import { whoami } from './reducers/auth'
 import { fetchAllUsers } from './reducers/user'
@@ -30,6 +31,7 @@ const BlogFolio = connect(
 const onHomeEnter = () => store.dispatch(whoami())
 const onUserSignUpEnter = () => store.dispatch(fetchAllUsers())
 const onLoginEnter = () => store.dispatch(fetchAllUsers())
+const onConwayEnter = () => store.dispatch(whoami())
 
 render(
   <Provider store={store}>
@@ -39,6 +41,7 @@ render(
         <Route path="/home" component={HomeContainer} onEnter={onHomeEnter} />
         <Route path='/showLoginModal' component={LoginModalContainer} onEnter={onLoginEnter}/>
         <Route path='/showSignUpModal' component={SignUpModalContainer} onEnter={onUserSignUpEnter} />
+        <Route path='/conways' component={ConwaysContainer} onEnter={onConwayEnter} />
       </Route>
       <Route path='*' component={NotFound} />
     </Router>
