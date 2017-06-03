@@ -3,8 +3,9 @@ import Conways from '../components/Conways'
 import { connect } from 'react-redux'
 import { updateTable, togClass } from '../reducers/conway'
 
+let tableObject
 const mapStateToProps = state => {
-  const tableObject = state.conway.table
+  tableObject = state.conway.table.concat()
   return {
     tableObject
   }
@@ -12,11 +13,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => (
   {
-    sendTblState(table) {
-      dispatch(updateTable(table))
+    sendTblState() {
+      return dispatch(updateTable(tableObject))
     },
     toggleClass(r, c, table) {
-      dispatch(togClass(r, c, table))
+      return dispatch(togClass(r, c, tableObject))
     }
   }
 )
