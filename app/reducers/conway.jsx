@@ -1,9 +1,11 @@
 import axios from 'axios'
-import { tableChange, tableCreate, tableResetRandom } from '../utilities/conway'
+import { tableChange, tableCreate, tableResetRandom, lastStOns } from '../utilities/conway'
 
 const initState = {
   table: tableCreate(12, 12), // remove hard code and add custom sizing form
-  autoPlay: false
+  autoPlay: false,
+  lastStateOns: 0,
+  frozenTable: false
 }
 
 const reducer = (state=initState, action) => {
@@ -12,6 +14,7 @@ const reducer = (state=initState, action) => {
   switch (action.type) {
   case UPDATE_TABLE:
     newState.table = action.tableCopy
+    newState.frozenTable = action.freezeCheck
     break
 
   case CLEAR_BOARD:
@@ -20,6 +23,7 @@ const reducer = (state=initState, action) => {
 
   case TOGGLE_CLASS:
     newState.table = action.tableCopy
+    newState.lastStateOns = action.lastStateOns
     break
 
   case RESET_RANDOM:
@@ -28,6 +32,10 @@ const reducer = (state=initState, action) => {
 
   case AUTO_PLAY:
     newState.autoPlay = action.bool
+    break
+
+  case FROZEN_TABLE:
+    newState.frozenTable = action.bool
     break
 
   default:
@@ -40,13 +48,18 @@ const TOGGLE_CLASS = 'TOGGLE_CLASS'
 export const togClass = (row, col, table) => {
   const tableCopy = table.concat()
   tableCopy[row][col] = table[row][col]==='off' ? 'on' : 'off'
-  return {type: TOGGLE_CLASS, tableCopy}
+  const lastStateOns = lastStOns(tableCopy)
+  return {type: TOGGLE_CLASS, tableCopy, lastStateOns}
 }
 
 const UPDATE_TABLE = 'UPDATE_TABLE'
 export const updateTable = tab => {
-  const tableCopy = tableChange(tab).concat()
-  return {type: UPDATE_TABLE, tableCopy}
+  const lastStateOns = lastStOns(tab)
+  const tableChangeResult = tableChange(tab)
+  let freezeCheck = tableChangeResult[1]
+  const tableCopy = tableChangeResult[0]
+  freezeCheck = freezeCheck < 1
+  return {type: UPDATE_TABLE, tableCopy, freezeCheck}
 }
 
 const CLEAR_BOARD = 'CLEAR_BOARD'
@@ -63,5 +76,8 @@ export const resetRandom = (h, w) => {
 
 const AUTO_PLAY = 'AUTO_PLAY'
 export const autoPlay = bool => ({type: AUTO_PLAY, bool})
+
+const FROZEN_TABLE = 'FROZEN_TABLE'
+export const frozeUp = bool => ({type: FROZEN_TABLE, bool})
 
 export default reducer

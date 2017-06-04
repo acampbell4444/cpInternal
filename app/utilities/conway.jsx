@@ -1,4 +1,5 @@
 export const tableChange = (tab) => {
+  let freezeCheck = 0
   const table = tab.map(arr => arr.slice())
   for (let row = 0; row < table.length; row++) {
     for (let col = 0; col < table[row].length; col++) {
@@ -16,15 +17,17 @@ export const tableChange = (tab) => {
       if (tab[row][col]==='on') {
         if (aliveNeighbors<2||aliveNeighbors>3) {
           tab[row][col]='off'
+          freezeCheck++
         }
       } else {
         if (aliveNeighbors===3) {
           tab[row][col]='on'
+          freezeCheck++
         }
       }
     }
   }
-  return tab
+  return [tab, freezeCheck]
 }
 
 export const tableCreate = (h, w) => {
@@ -53,3 +56,5 @@ export const tableResetRandom = (h, w) => {
   }
   return array
 }
+
+export const lastStOns = table => table.map(row => row.filter(col => col ==='on').length).reduce((a, b) => a+b, 0)

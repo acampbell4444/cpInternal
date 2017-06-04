@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
 import Conways from '../components/Conways'
 import { connect } from 'react-redux'
-import { updateTable, togClass, clearBoard, resetRandom, autoPlay } from '../reducers/conway'
+import { updateTable, togClass, clearBoard, resetRandom, autoPlay, frozeUp } from '../reducers/conway'
 
-let tableObject, stepInterval
+let tableObject, stepInterval, frozen
 
 const mapStateToProps = state => {
   tableObject = state.conway.table.concat()
+  frozen = state.conway.frozenTable
   return {
     tableObject,
+    frozenTable: frozen,
     autoPlayOn: state.conway.autoPlay
   }
 }
@@ -16,16 +18,24 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => (
   {
     nextStep() {
-      return dispatch(updateTable(tableObject))
+      if (frozen) {
+        clearInterval(stepInterval)
+        stepInterval=null
+        dispatch(autoPlay(false))
+      }
+      dispatch(updateTable(tableObject))
     },
     toggleClass(r, c, table) {
-      return dispatch(togClass(r, c, tableObject))
+      dispatch(frozeUp(false))
+      dispatch(togClass(r, c, tableObject))
     },
     clearTheBoard(h, w) {
-      return dispatch(clearBoard(h, w))
+      dispatch(frozeUp(false))
+      dispatch(clearBoard(h, w))
     },
     resetRand(h, w) {
-      return dispatch(resetRandom(h, w))
+      dispatch(frozeUp(false))
+      dispatch(resetRandom(h, w))
     },
     autoPl(bool, nS) {
       if (!stepInterval) {
