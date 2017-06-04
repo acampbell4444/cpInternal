@@ -11,3 +11,17 @@
 .on {
 	background-color: blue;
 }
+
+#conwayTitle {
+	font-size: 27px;
+	margin: 4%;
+	text-align: center;
+}
+
+#buttons {
+	margin: 2%;
+}
+
+#theBoard {
+	margin: 2% auto;
+}

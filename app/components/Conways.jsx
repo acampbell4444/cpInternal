@@ -3,10 +3,11 @@ import { Link } from 'react-router'
 
 export default class extends Component {
   render() {
-    const { sendTblState, toggleClass, tableObject } = this.props
+    const { nextStep, toggleClass, tableObject, clearTheBoard, resetRand, autoPl, autoPlayOn } = this.props
     return (
       <div>
-        <table className='center'>
+        <h1 id='conwayTitle'>Conway's Game of Life (via React/Redux)</h1>
+        <table className='center' id='theBoard'>
           <tbody>
             {
               tableObject.map((row, rIdx) =>
@@ -23,9 +24,23 @@ export default class extends Component {
             }
           </tbody>
         </table>
-        <button className='btn btn-success'
-                onClick={ sendTblState }>Next Frame
-        </button>
+        <div className='center' id='buttons'>
+          <button className='btn btn-success'
+            onClick={ nextStep }>Next Frame
+          </button>
+          <button className='btn btn-primary'
+            onClick={e => clearTheBoard(tableObject.length, tableObject[0].length) }>Clear Board
+          </button>
+          <button className='btn btn-warning'
+            onClick={e => resetRand(tableObject.length, tableObject[0].length) }>Reset Random
+          </button>
+          {
+            !autoPlayOn&&(<button className='btn btn-info' onClick={e => autoPl(true, nextStep) }>Enable Auto-Play</button>)
+          }
+          {
+            autoPlayOn&&(<button className='btn btn-danger' onClick={e => autoPl(false) }>Turn Auto-Play Off</button>)
+          }
+        </div>
       </div>
     )
   }

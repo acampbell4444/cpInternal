@@ -1,19 +1,9 @@
 import axios from 'axios'
-import { tableChange } from '../utilities/conway'
-
-const tableObj = (h, w) => {
-  const array = []
-  for (let i = 0; i < h; i++) {
-    array[i] = []
-    for (let x = 0; x < w; x++) {
-      array[i].push('off')
-    }
-  }
-  return array
-}
+import { tableChange, tableCreate, tableResetRandom } from '../utilities/conway'
 
 const initState = {
-  table: tableObj(12, 12) // remove hard code and add custom sizing form
+  table: tableCreate(12, 12), // remove hard code and add custom sizing form
+  autoPlay: false
 }
 
 const reducer = (state=initState, action) => {
@@ -24,8 +14,20 @@ const reducer = (state=initState, action) => {
     newState.table = action.tableCopy
     break
 
+  case CLEAR_BOARD:
+    newState.table = action.tableCopy
+    break
+
   case TOGGLE_CLASS:
     newState.table = action.tableCopy
+    break
+
+  case RESET_RANDOM:
+    newState.table = action.tableCopy
+    break
+
+  case AUTO_PLAY:
+    newState.autoPlay = action.bool
     break
 
   default:
@@ -46,5 +48,20 @@ export const updateTable = tab => {
   const tableCopy = tableChange(tab).concat()
   return {type: UPDATE_TABLE, tableCopy}
 }
+
+const CLEAR_BOARD = 'CLEAR_BOARD'
+export const clearBoard = (h, w) => {
+  const tableCopy = tableCreate(h, w).concat()
+  return {type: CLEAR_BOARD, tableCopy}
+}
+
+const RESET_RANDOM = 'RESET_RANDOM'
+export const resetRandom = (h, w) => {
+  const tableCopy = tableResetRandom(h, w).concat()
+  return {type: RESET_RANDOM, tableCopy}
+}
+
+const AUTO_PLAY = 'AUTO_PLAY'
+export const autoPlay = bool => ({type: AUTO_PLAY, bool})
 
 export default reducer

@@ -26,3 +26,30 @@ export const tableChange = (tab) => {
   }
   return tab
 }
+
+export const tableCreate = (h, w) => {
+  const array = []
+  for (let i = 0; i < h; i++) {
+    array[i] = []
+    for (let x = 0; x < w; x++) {
+      array[i].push('off')
+    }
+  }
+  return array
+}
+
+export const tableResetRandom = (h, w) => {
+  const array = []
+  for (let i = 0; i < h; i++) {
+    array[i] = []
+    for (let x = 0; x < w; x++) {
+      const num = Math.random(1)
+      if (num > 0.5) {
+        array[i].push('off')
+      } else {
+        array[i].push('on')
+      }
+    }
+  }
+  return array
+}
