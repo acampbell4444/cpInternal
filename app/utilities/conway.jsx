@@ -30,16 +30,7 @@ export const tableChange = (tab) => {
   return [tab, freezeCheck]
 }
 
-export const tableCreate = (h, w) => {
-  const array = []
-  for (let i = 0; i < h; i++) {
-    array[i] = []
-    for (let x = 0; x < w; x++) {
-      array[i].push('off')
-    }
-  }
-  return array
-}
+export const tableCreate = (h, w) => new Array(h).fill(new Array(w).fill('off'))
 
 export const tableResetRandom = (h, w) => {
   const array = []
@@ -58,3 +49,23 @@ export const tableResetRandom = (h, w) => {
 }
 
 export const lastStOns = table => table.map(row => row.filter(col => col ==='on').length).reduce((a, b) => a+b, 0)
+
+export const resizeBoard = (size, board) => {
+  let newSize
+  if (size==='small') { newSize = 12 }
+  if (size==='medium') { newSize = 24 }
+  if (size==='large') { newSize = 36 }
+  const array = []
+  for (let i = 0; i < newSize; i++) {
+    array[i] = []
+    for (let x = 0; x < newSize; x++) {
+      if (board[i]&&board[i][x]) {
+        array[i].push(board[i][x])
+      } else {
+        array[i].push('off')
+      }
+    }
+  }
+  console.log(array)
+  return array
+}

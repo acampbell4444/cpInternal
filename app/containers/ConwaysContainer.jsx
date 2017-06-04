@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Conways from '../components/Conways'
 import { connect } from 'react-redux'
-import { updateTable, togClass, clearBoard, resetRandom, autoPlay, frozeUp } from '../reducers/conway'
+import { updateTable, togClass, clearBoard, resetRandom, autoPlay, frozeUp, changeBoardSize } from '../reducers/conway'
 
 let tableObject, stepInterval, frozen
 
@@ -11,7 +11,8 @@ const mapStateToProps = state => {
   return {
     tableObject,
     frozenTable: frozen,
-    autoPlayOn: state.conway.autoPlay
+    autoPlayOn: state.conway.autoPlay,
+    boardSize: state.conway.boardSize
   }
 }
 
@@ -45,7 +46,11 @@ const mapDispatchToProps = dispatch => (
         stepInterval=null
       }
       return dispatch(autoPlay(bool))
-    }
+    },
+    changeActiveSize(size, table) {
+      dispatch(frozeUp(false))
+      dispatch(changeBoardSize(size, table))
+    },
   }
 )
 

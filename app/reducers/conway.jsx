@@ -1,11 +1,12 @@
 import axios from 'axios'
-import { tableChange, tableCreate, tableResetRandom, lastStOns } from '../utilities/conway'
+import { tableChange, tableCreate, tableResetRandom, lastStOns, resizeBoard } from '../utilities/conway'
 
 const initState = {
-  table: tableCreate(12, 12), // remove hard code and add custom sizing form
+  table: resizeBoard('small', []), // remove hard code and add custom sizing form
   autoPlay: false,
   lastStateOns: 0,
-  frozenTable: false
+  frozenTable: false,
+  boardSize: 'small'
 }
 
 const reducer = (state=initState, action) => {
@@ -32,6 +33,11 @@ const reducer = (state=initState, action) => {
 
   case AUTO_PLAY:
     newState.autoPlay = action.bool
+    break
+
+  case CHANGE_SIZE:
+    newState.table = action.boardCopy
+    newState.boardSize = action.size
     break
 
   case FROZEN_TABLE:
@@ -72,6 +78,12 @@ const RESET_RANDOM = 'RESET_RANDOM'
 export const resetRandom = (h, w) => {
   const tableCopy = tableResetRandom(h, w).concat()
   return {type: RESET_RANDOM, tableCopy}
+}
+
+const CHANGE_SIZE = 'CHANGE_SIZE'
+export const changeBoardSize = (size, board) => {
+  const boardCopy = resizeBoard(size, board).concat()
+  return {type: CHANGE_SIZE, boardCopy, size}
 }
 
 const AUTO_PLAY = 'AUTO_PLAY'
