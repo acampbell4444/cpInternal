@@ -2,7 +2,7 @@ import axios from 'axios'
 import { tableChange, tableCreate, tableResetRandom, lastStOns, resizeBoard } from '../utilities/conway'
 
 const initState = {
-  table: resizeBoard('small', []), // remove hard code and add custom sizing form
+  table: resizeBoard('small', []),
   autoPlay: false,
   lastStateOns: 0,
   frozenTable: false,

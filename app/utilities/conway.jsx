@@ -66,6 +66,5 @@ export const resizeBoard = (size, board) => {
       }
     }
   }
-  console.log(array)
   return array
 }
