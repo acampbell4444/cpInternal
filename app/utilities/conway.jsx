@@ -30,7 +30,16 @@ export const tableChange = (tab) => {
   return [tab, freezeCheck]
 }
 
-export const tableCreate = (h, w) => new Array(h).fill(new Array(w).fill('off'))
+export const tableCreate = (h, w) => {
+  const array = []
+  for (let a = 0; a < h; a++) {
+    array[a]=[]
+    for (let b = 0; b < w; b++) {
+      array[a].push('off')
+    }
+  }
+  return array
+}
 
 export const tableResetRandom = (h, w) => {
   const array = []

@@ -21,6 +21,7 @@ export default function HomeNavigationalComponent({user}) {
               <MenuItem eventKey={2.1}>Random Widgets</MenuItem>
               <NavDropdown eventKey={3} title="Games" id="games-dropdown">
                 <MenuItem eventKey={3.1} onSelect={e => browserHistory.push('/conways')}>Conway's Game of Life w/React & Redux</MenuItem>
+                <MenuItem eventKey={3.2} onSelect={e => browserHistory.push('/slidePuzzle')}>Slide Puzzle</MenuItem>
               </NavDropdown>
 
               <MenuItem eventKey={2.3}>Tech Demos</MenuItem>

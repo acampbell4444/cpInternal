@@ -5,6 +5,7 @@ const rootReducer = combineReducers({
   auth: require('./auth').default,
   user: require('./user').default,
   conway: require('./conway').default,
+  slidePuzzle: require('./slidePuzzle').default,
   form: formReducer
 })
 

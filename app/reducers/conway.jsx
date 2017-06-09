@@ -70,19 +70,19 @@ export const updateTable = tab => {
 
 const CLEAR_BOARD = 'CLEAR_BOARD'
 export const clearBoard = (h, w) => {
-  const tableCopy = tableCreate(h, w).concat()
+  const tableCopy = tableCreate(h, w)
   return {type: CLEAR_BOARD, tableCopy}
 }
 
 const RESET_RANDOM = 'RESET_RANDOM'
 export const resetRandom = (h, w) => {
-  const tableCopy = tableResetRandom(h, w).concat()
+  const tableCopy = tableResetRandom(h, w)
   return {type: RESET_RANDOM, tableCopy}
 }
 
 const CHANGE_SIZE = 'CHANGE_SIZE'
 export const changeBoardSize = (size, board) => {
-  const boardCopy = resizeBoard(size, board).concat()
+  const boardCopy = resizeBoard(size, board)
   return {type: CHANGE_SIZE, boardCopy, size}
 }
 
