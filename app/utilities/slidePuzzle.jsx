@@ -32,6 +32,24 @@ export const manageTheDrop = (data, board) => {
   return boardState
 }
 
+export const manageJustClick = (idx, cellNum, brd) => {
+  const board = brd.concat()
+  const offIndex = board.indexOf('off')
+  board[offIndex] = cellNum
+  board[idx] = 'off'
+  return board
+}
+
+export const doArraysMatch= board => {
+  const winningBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 'off']
+  for (let i = 0; i < board.length-1; i++) {
+    if (board[i]!==winningBoard[i]) {
+      return false
+    }
+  }
+  return true
+}
+
 export const determineDraggable = (board) => {
   const offIndex = board.indexOf('off')
   const draggableArray = []
