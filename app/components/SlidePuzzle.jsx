@@ -24,7 +24,7 @@ export default class extends Component {
                 }
                 {
                   !draggableArray.includes(idx)&&(
-                    <div className={'dragCell ' + cell}>{cell}</div>
+                    <div className={'dragCell ' + 'slide' + cell}>{cell}</div>
                   )
                 }
                 </Droppable>
