@@ -1,10 +1,13 @@
+import { updateTheBoard } from '../reducers/slidePuzzle'
+
 export const createBoard = size => {
   const array = []
   for (let a = 0; a < size-1; a++) {
     array.push(a+1)
   }
-  array.push('off')
-  return shuffleArray(array)
+  array.push('')
+  // return shuffleArray(array)
+  return array
 }
 
 const shuffleArray= array => {
@@ -19,7 +22,7 @@ const shuffleArray= array => {
 
 export const manageTheDrop = (data, board) => {
   const boardState = board.concat()
-  const offIndex = boardState.indexOf('off')
+  const offIndex = boardState.indexOf('')
   let selectedIndex, value
   for (const cell in data) {
     if (data[cell]) {
@@ -28,15 +31,15 @@ export const manageTheDrop = (data, board) => {
     }
   }
   boardState[offIndex]=value
-  boardState[selectedIndex]='off'
+  boardState[selectedIndex]=''
   return boardState
 }
 
 export const manageJustClick = (idx, cellNum, brd) => {
   const board = brd.concat()
-  const offIndex = board.indexOf('off')
+  const offIndex = board.indexOf('')
   board[offIndex] = cellNum
-  board[idx] = 'off'
+  board[idx] = ''
   return board
 }
 
@@ -51,7 +54,7 @@ export const doArraysMatch= board => {
 }
 
 export const determineDraggable = (board) => {
-  const offIndex = board.indexOf('off')
+  const offIndex = board.indexOf('')
   const draggableArray = []
   switch (offIndex) {
   case 0:

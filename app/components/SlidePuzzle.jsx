@@ -8,13 +8,14 @@ export default class extends Component {
   }
 
   render() {
-    const { boardState, handleDragStart, handleJustClick, draggableArray, onDrop, winBoard, resetBoard } = this.props
+    const { boardState, handleDragStart, handleJustClick, draggableArray, onDrop, winBoard, resetBoard, totalMoves, solvePuzzle } = this.props
     const draggableArrayOfStrings = draggableArray.map(n => n.toString())
     return (
       <div>
         <div className='puzTitleRow'>
           <p id='puzGameTitle' >Game of 15</p>
           <span id='puzGameReactTitle'> (via React/Redux)</span>
+          <p id='puzzleMoveCounter'> Total Moves: {' '+ totalMoves}</p>
         </div>
         <div className='puzzleBoard'>
           <div className='row' id='rowOfCells'>
@@ -24,7 +25,7 @@ export default class extends Component {
                   <Droppable types={draggableArrayOfStrings} onDrop={onDrop}>
                   {
                     draggableArray.includes(idx)&&(
-                      <Draggable type={idx} className={'dragCell'} data={cell} onClick={e => handleJustClick(idx, cell)}>
+                      <Draggable type={idx} className={'dragCell'} data={cell} onClick={e => handleJustClick(idx, cell, solvePuzzle)}>
                         <p className='puzzleNumber'>{cell}</p>
                       </Draggable>
                     )
@@ -45,7 +46,10 @@ export default class extends Component {
         <div className='row center'>
           {
             !winBoard&&(
-              <button className='btn btn-primary btn-xs' id='slidePuzzleReset' onClick={resetBoard}>Reset</button>
+              <div>
+                <button onClick={e => solvePuzzle(handleJustClick)} className='btn btn-success' id='solveSlideButton'>Solve</button>
+                <button className='btn btn-primary' id='slidePuzzleReset' onClick={resetBoard}>Reset</button>
+              </div>
             )
           }
           {

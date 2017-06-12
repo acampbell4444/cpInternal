@@ -17,7 +17,7 @@
 	background: lightsalmon;
 }
 
-.slideoff {
+.slide {
 	border: 1px solid white;
 	color: white;
 	background-color: white
@@ -46,8 +46,12 @@
 	      animation: bounce-in-top 2.1s both;
 }
 
+#puzzleMoveCounter {
+  margin-top: 8px
+}
+
 .puzTitleRow {
-  margin: 30px auto;
+  margin: 10px auto;
   text-align: center
 }
 
@@ -71,7 +75,14 @@
 }
 
 #slidePuzzleReset {
-	margin-top: 8px;
+  margin: 8px 8px;
+  height: 40px;
+  width: 80px;
+  font-size: 20px
+}
+
+#solveSlideButton {
+	margin: 8px 8px;
 	height: 40px;
 	width: 80px;
 	font-size: 20px
