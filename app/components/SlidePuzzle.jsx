@@ -8,7 +8,7 @@ export default class extends Component {
   }
 
   render() {
-    const { boardState, handleDragStart, handleJustClick, draggableArray, onDrop, winBoard, resetBoard, totalMoves, solvePuzzle } = this.props
+    const { boardState, handleDragStart, handleJustClick, draggableArray, onDrop, winBoard, resetBoard, resetMoves, totalMoves, solvePuzzle, classMaker, shuffle, shuffleAuto } = this.props
     const draggableArrayOfStrings = draggableArray.map(n => n.toString())
     return (
       <div>
@@ -25,14 +25,14 @@ export default class extends Component {
                   <Droppable types={draggableArrayOfStrings} onDrop={onDrop}>
                   {
                     draggableArray.includes(idx)&&(
-                      <Draggable type={idx} className={'dragCell'} data={cell} onClick={e => handleJustClick(idx, cell, solvePuzzle)}>
+                      <Draggable type={idx} className={classMaker(idx, cell)} data={cell} onClick={e => handleJustClick(idx, cell, solvePuzzle)}>
                         <p className='puzzleNumber'>{cell}</p>
                       </Draggable>
                     )
                   }
                   {
                     !draggableArray.includes(idx)&&(
-                      <div className={'dragCell ' + 'slide' + cell}>
+                      <div className={classMaker(idx, cell)}>
                         <p className='puzzleNumber'>{cell}</p>
                       </div>
                     )
@@ -46,18 +46,16 @@ export default class extends Component {
         <div className='row center'>
           {
             !winBoard&&(
-              <div>
-                <button onClick={e => solvePuzzle(handleJustClick)} className='btn btn-success' id='solveSlideButton'>Solve</button>
-                <button className='btn btn-primary' id='slidePuzzleReset' onClick={resetBoard}>Reset</button>
-              </div>
+            <span>
+              <button onClick={e => solvePuzzle(handleJustClick)} className='btn btn-success' id='solveSlideButton'>Solve</button>
+              <button className='btn btn-danger' id='slidePuzzleReset' onClick={resetBoard}>Reset</button>
+            </span>
             )
           }
+          <button className='btn btn-info' id='slidePuzzleShuffle' onClick={e => shuffleAuto(shuffle)}>Shuffle</button>
           {
-            winBoard&&(
-              <div id='puzzleWinBubble'>
-                <p id='puzzleBubbleText'>You Win!</p>
-                <button className='btn btn-primary btn-xs' id='slidePuzzleResetWin' onClick={resetBoard}>Reset</button>
-              </div>
+            winBoard&&totalMoves>1&&(
+              <button onClick={resetMoves} className='btn btn-warning' id='resetMoves'>Reset Total Moves</button>
             )
           }
         </div>

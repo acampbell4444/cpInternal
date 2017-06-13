@@ -43,7 +43,7 @@ export const manageJustClick = (idx, cellNum, brd) => {
   return board
 }
 
-export const doArraysMatch= board => {
+export const doArraysMatch = board => {
   const winningBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 'off']
   for (let i = 0; i < board.length-1; i++) {
     if (board[i]!==winningBoard[i]) {
@@ -51,6 +51,21 @@ export const doArraysMatch= board => {
     }
   }
   return true
+}
+
+export const shuffleIt = (brd, lastMovedCellNum) => {
+  const board = brd.concat()
+  let available = determineDraggable(board)
+  if (lastMovedCellNum) {
+    const lastMoveIndex = board.indexOf(lastMovedCellNum)
+    available = available.filter(i => i !== lastMoveIndex)
+  }
+  const idx = shuffleArray(available)[0]
+  const cellNum = board[idx]
+  const offIndex = board.indexOf('')
+  board[offIndex] = cellNum
+  board[idx] = ''
+  return [board, cellNum]
 }
 
 export const determineDraggable = (board) => {

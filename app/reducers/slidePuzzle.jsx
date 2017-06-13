@@ -5,7 +5,9 @@ const initState = {
   boardState: createBoard(16),
   winningBoard: false,
   totalMoves: 0,
-  solutionArray: []
+  solutionArray: [],
+  lastMoveCellNum: null,
+  shuffleMoves: 0
 }
 
 const reducer = (state=initState, action) => {
@@ -32,6 +34,14 @@ const reducer = (state=initState, action) => {
     newState.solutionArray = action.array
     break
 
+  case UPDATE_LAST_MOVE_CELLNUM:
+    newState.lastMoveCellNum = action.num
+    break
+
+  case UPDATE_SHUFFLE_MOVES:
+    newState.shuffleMoves = action.moves
+    break
+
   default:
     return state
   }
@@ -52,6 +62,12 @@ export const totalMovesReset = () => ({type: MOVES_RESET, moves: 0})
 
 const UPDATE_SOLUTION_ARRAY = 'UPDATE_SOLUTIONS_ARRAY'
 export const updateSolutionArray = array => ({type: UPDATE_SOLUTION_ARRAY, array})
+
+const UPDATE_LAST_MOVE_CELLNUM = 'UPDATE_LAST_MOVE_CELLNUM'
+export const updateLastMoveCellNum = num => ({type: UPDATE_LAST_MOVE_CELLNUM, num})
+
+const UPDATE_SHUFFLE_MOVES = 'UPDATE_SHUFFLE_MOVES'
+export const updateShuffleMoves = moves => ({type: UPDATE_SHUFFLE_MOVES, moves})
 
 export const resetTheBoard = () => {
   const board = createBoard(16)

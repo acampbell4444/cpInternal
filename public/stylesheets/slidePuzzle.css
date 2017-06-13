@@ -7,17 +7,25 @@
 	width: 420px;
 }
 
-.dragCell {
+.inplace, .outOfPlace, .slideCellOff {
 	border: 1px solid black;
 	width: 100px;
 	height: 100px;
 	margin: 2px auto;
 	text-align: center;
 	padding-top: 15px;
-	background: lightsalmon;
+  font-weight: 900;
 }
 
-.slide {
+.inplace {
+    background: green;
+}
+
+.outOfPlace {
+  background: red;
+}
+
+.slideCellOff {
 	border: 1px solid white;
 	color: white;
 	background-color: white
@@ -74,18 +82,18 @@
 	 animation: heartbeat 1.5s ease-in-out infinite both;
 }
 
-#slidePuzzleReset {
+#slidePuzzleReset, #slidePuzzleShuffle, #solveSlideButton {
   margin: 8px 8px;
   height: 40px;
   width: 80px;
   font-size: 20px
 }
 
-#solveSlideButton {
-	margin: 8px 8px;
-	height: 40px;
-	width: 80px;
-	font-size: 20px
+#resetMoves {
+  margin: 8px 8px;
+  height: 40px;
+  width: 170px;
+  font-size: 20px
 }
 
 #slidePuzzleResetWin {
