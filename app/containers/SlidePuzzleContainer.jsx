@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import SlidePuzzle from '../components/SlidePuzzle'
 import { connect } from 'react-redux'
-import { updateBoard, winningBoard, resetTheBoard, totalMovesPlusOne, totalMovesReset, updateSolutionArray, updateLastMoveCellNum, updateShuffleMoves } from '../reducers/slidePuzzle'
+import { updateBoard, winningBoard, resetTheBoard, totalMovesPlusOne, totalMovesReset, updateSolutionArray, updateLastMoveCellNum, updateShuffleMoves, updateShuffleState, updateSolveState } from '../reducers/slidePuzzle'
 import { determineDraggable, manageTheDrop, manageJustClick, doArraysMatch, shuffleIt } from '../utilities/slidePuzzle'
 import { NPuzzleSolver } from '../utilities/puzzleSolver'
 import { Puzzle } from '../utilities/puzzleSolver2'
@@ -9,6 +9,8 @@ import { Puzzle } from '../utilities/puzzleSolver2'
 let boardState, winBoard, winState, totalMoves, stepInterval, stepInterval2, solutionArray, solved, lastMoveCellNum, shuffMoves
 
 const mapStateToProps = state => {
+  const { isShuffling, isSolving } = state.slidePuzzle
+
   boardState = state.slidePuzzle.boardState
   const draggableArray = determineDraggable(boardState)
   totalMoves = state.slidePuzzle.totalMoves
@@ -23,7 +25,9 @@ const mapStateToProps = state => {
     boardState,
     draggableArray,
     winBoard,
-    totalMoves
+    totalMoves,
+    isShuffling,
+    isSolving
   }
 }
 
@@ -37,6 +41,8 @@ const mapDispatchToProps = (dispatch, ownProps) => (
         clearInterval(stepInterval2)
         stepInterval2 = null
         dispatch(updateShuffleMoves(0))
+        dispatch(updateShuffleState(false))
+        dispatch(updateSolveState(false))
       } else {
         const result = shuffleIt(boardState, lastMoveCellNum)
         dispatch(updateBoard(result[0]))
@@ -45,6 +51,7 @@ const mapDispatchToProps = (dispatch, ownProps) => (
       }
     },
     shuffleAuto(shuff) {
+      dispatch(updateShuffleState(true))
       stepInterval2 = setInterval(shuff.bind(this), 200)
       dispatch(totalMovesReset())
     },
@@ -65,12 +72,13 @@ const mapDispatchToProps = (dispatch, ownProps) => (
     resetMoves() {
       dispatch(totalMovesReset())
     },
-    handleJustClick(idx, cellNum, solvPuzz) {
+    handleJustClick(idx, cellNum) {
       let index
       if (idx==='auto') {
         if (winBoard) {
           clearInterval(stepInterval)
           stepInterval = null
+          dispatch(updateSolveState(false))
           return
         }
         cellNum = solutionArray.shift()
@@ -103,6 +111,7 @@ const mapDispatchToProps = (dispatch, ownProps) => (
         const solver = new NPuzzleSolver(array)
         const solutionArray = solver.solve().map(state => state.number)
         dispatch(updateSolutionArray(solutionArray))
+        dispatch(updateSolveState(true))
         stepInterval = setInterval(handClick.bind(this, 'auto'), 350)
       } else {
         clearInterval(stepInterval)

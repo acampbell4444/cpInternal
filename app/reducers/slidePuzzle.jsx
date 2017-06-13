@@ -42,6 +42,14 @@ const reducer = (state=initState, action) => {
     newState.shuffleMoves = action.moves
     break
 
+  case UPDATE_SHUFFLE_STATE:
+    newState.isShuffling = action.bool
+    break
+
+  case UPDATE_SOLVE_STATE:
+    newState.isSolving = action.bool
+    break
+
   default:
     return state
   }
@@ -68,6 +76,12 @@ export const updateLastMoveCellNum = num => ({type: UPDATE_LAST_MOVE_CELLNUM, nu
 
 const UPDATE_SHUFFLE_MOVES = 'UPDATE_SHUFFLE_MOVES'
 export const updateShuffleMoves = moves => ({type: UPDATE_SHUFFLE_MOVES, moves})
+
+const UPDATE_SHUFFLE_STATE = 'UPDATE_SHUFFLE_STATE'
+export const updateShuffleState = bool => ({type: UPDATE_SHUFFLE_STATE, bool})
+
+const UPDATE_SOLVE_STATE = 'UPDATE_SOLVE_STATE'
+export const updateSolveState = bool => ({type: UPDATE_SOLVE_STATE, bool})
 
 export const resetTheBoard = () => {
   const board = createBoard(16)

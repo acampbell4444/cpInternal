@@ -1,10 +1,33 @@
-.puzzleBoard {
+.slidePuzzleCanvas {
+  background-image: url('/images/beachSurreal.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size:  cover;
+  background-color: #999;
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  min-height: 100%;
+  min-width: 100%;
+  padding-bottom: 100px;
+}
 
+.puzzleBackground {
+  width: 480px;
+  margin: 75px auto;
+  background-color: #36454F;
+  border-radius: 10%;
 }
 
 #rowOfCells {
-	margin: 0 auto;
+  margin: 0 auto;
 	width: 420px;
+  margin-right: 42px;
 }
 
 .inplace, .outOfPlace, .slideCellOff {
@@ -15,31 +38,38 @@
 	text-align: center;
 	padding-top: 15px;
   font-weight: 900;
+  border-radius: 3%;
 }
 
 .inplace {
-    background: green;
+    background: limegreen;
 }
 
 .outOfPlace {
-  background: red;
+  background: coral;
 }
 
 .slideCellOff {
-	border: 1px solid white;
+	border: 1px solid #36454F;
 	color: white;
-	background-color: white
+	background-color: #36454F
 }
 
 .puzzleNumber {
 	margin-top: 20px;
 	font-size: 30px;
 	color: white;
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;  
 }
 
 #puzGameTitle{
+  margin-top: 4%;
   font-size: 40px;
-  color: tomato;
+  color: limegreen;
   display: inline-block;
   -webkit-animation: swirl-in-fwd 1.6s ease-out both;
           animation: swirl-in-fwd 1.6s ease-out both;
@@ -47,7 +77,7 @@
 
 #puzGameReactTitle {
   font-size: 25px;
-  color: black;
+  color: coral;
   display: inline-block;
   margin-left: 15px;
   -webkit-animation: bounce-in-top 2.1s both;
@@ -55,11 +85,12 @@
 }
 
 #puzzleMoveCounter {
-  margin-top: 8px
+  margin: 2%;
+  color: white;
 }
 
 .puzTitleRow {
-  margin: 10px auto;
+  margin: 0 auto;
   text-align: center
 }
 
@@ -83,17 +114,33 @@
 }
 
 #slidePuzzleReset, #slidePuzzleShuffle, #solveSlideButton {
-  margin: 8px 8px;
+  margin: 3% 2%;
   height: 40px;
   width: 80px;
   font-size: 20px
+}
+
+#slidePuzzleReset {
+  background-color: coral;
+}
+
+#solveSlideButton {
+  background-color: limegreen;
+}
+
+
+#slidePuzzleShuffle {
+  background-color: white;
+  color: black;
 }
 
 #resetMoves {
   margin: 8px 8px;
   height: 40px;
   width: 170px;
-  font-size: 20px
+  font-size: 20px;
+  background-color: coral;
+  border-color: coral;
 }
 
 #slidePuzzleResetWin {
