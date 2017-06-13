@@ -46,6 +46,7 @@ const mapDispatchToProps = (dispatch, ownProps) => (
     },
     shuffleAuto(shuff) {
       stepInterval2 = setInterval(shuff.bind(this), 200)
+      dispatch(totalMovesReset())
     },
     resetBoard() {
       dispatch(resetTheBoard())
