@@ -6,8 +6,10 @@ export default class extends Component {
   render() {
     const { nextStep, toggleClass, tableObject, clearTheBoard, resetRand, autoPl, autoPlayOn, frozenTable, changeActiveSize, boardSize } = this.props
     return (
-      <div>
-        <h1 id='conwayTitle'>Conway's Game of Life (via React/Redux)</h1>
+      <div className='conwayCanvas'>
+      <div id='conwayFrame'>
+        <h1 id='conwayTitle'>Conway's Game of Life</h1>
+        <p id= 'conwaySubtitle'>(via React/Redux)</p>
         <table className='center' id='theBoard'>
           <tbody>
             {
@@ -49,6 +51,7 @@ export default class extends Component {
             <MenuItem eventKey="3" active={boardSize==='large'} onClick={e => changeActiveSize('large', tableObject)}>Large (36 X 36)</MenuItem>
           </DropdownButton>
         </div>
+      </div>
       </div>
     )
   }

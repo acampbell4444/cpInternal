@@ -1,21 +1,32 @@
 .cell {
-  border: 1px solid #ddd;
-  width: 22px;
-  height: 22px;
+  border: 1px solid coral;
+  width: 18px;
+  height: 18px;
 }
 
 .off {
-	background-color: white;
+	background-color: rgba(255,255,255,0.5);
 }
 
 .on {
-	background-color: blue;
+	background-color: limegreen;
 }
 
 #conwayTitle {
-	font-size: 27px;
-	margin: 4%;
+	font-size: 32px;
+	margin-bottom: 10px;
 	text-align: center;
+	font-weight: 900;
+	color: #36454f;
+	-webkit-animation: tracking-in-expand 2.0s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+	        animation: tracking-in-expand 2.0s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+
+#conwaySubtitle {
+  text-align: center;
+  margin-bottom: 20px;
+  -webkit-animation: slide-in-bottom 2.0s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	      animation: slide-in-bottom 2.0s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 #buttons {
@@ -23,9 +34,88 @@
 }
 
 #theBoard {
-	margin: 2% auto;
+	margin: 0 auto;
 }
 
 .conButt {
 	margin: 0.5%;
 }
+
+.conwayCanvas {
+  background-image: url('/images/beachTreeShadow.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size:  cover;
+  background-color: #999;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  min-height: 100%;
+  min-width: 100%;
+  padding: 100px;
+}
+
+#conwayFrame {
+	border-radius: 5%;
+	background-color: rgba(255,255,255,0.2);
+	padding: 2%;
+	margin: 5% 10%
+
+}
+
+@-webkit-keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes slide-in-bottom {
+  0% {
+    -webkit-transform: translateY(1000px);
+            transform: translateY(1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-bottom {
+  0% {
+    -webkit-transform: translateY(1000px);
+            transform: translateY(1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
