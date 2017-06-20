@@ -2,14 +2,17 @@ import React, { Component } from 'react'
 import Conways from '../components/Conways'
 import { connect } from 'react-redux'
 import { updateTable, togClass, clearBoard, resetRandom, autoPlay, frozeUp, changeBoardSize } from '../reducers/conway'
+import { isBoardBlank } from '../utilities/conway'
 
 let tableObject, stepInterval, frozen
 
 const mapStateToProps = state => {
   tableObject = state.conway.table.concat()
   frozen = state.conway.frozenTable
+  const allOff = isBoardBlank(tableObject)
   return {
     tableObject,
+    allOff,
     frozenTable: frozen,
     autoPlayOn: state.conway.autoPlay,
     boardSize: state.conway.boardSize

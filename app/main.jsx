@@ -15,6 +15,8 @@ import LoginModalContainer from './containers/LoginModalContainer'
 import SignUpModalContainer from './containers/SignUpModalContainer'
 import ConwaysContainer from './containers/ConwaysContainer'
 import SlidePuzzleContainer from './containers/SlidePuzzleContainer'
+import AllBlogsContainer from './containers/AllBlogsContainer'
+import NewBlogContainer from './containers/NewBlogContainer'
 
 import { whoami } from './reducers/auth'
 import { fetchAllUsers } from './reducers/user'
@@ -34,6 +36,10 @@ const onUserSignUpEnter = () => store.dispatch(fetchAllUsers())
 const onLoginEnter = () => store.dispatch(fetchAllUsers())
 const onConwayEnter = () => store.dispatch(whoami())
 const onSlidePuzzleEnter = () => store.dispatch(whoami())
+const onBlogEnter = () => {
+  store.dispatch(whoami())
+  // store.dispatch(fetchAllBlogs())
+}
 
 render(
   <Provider store={store}>
@@ -45,6 +51,8 @@ render(
         <Route path='/showSignUpModal' component={SignUpModalContainer} onEnter={onUserSignUpEnter} />
         <Route path='/conways' component={ConwaysContainer} onEnter={onConwayEnter} />
         <Route path='/slidePuzzle' component={SlidePuzzleContainer} onEnter={onSlidePuzzleEnter} />
+        <Route path='/blogs' component={AllBlogsContainer} onEnter={onBlogEnter} />
+        <Route path='/blogs/new' component={NewBlogContainer} />
       </Route>
       <Route path='*' component={NotFound} />
     </Router>

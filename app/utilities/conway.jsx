@@ -77,3 +77,12 @@ export const resizeBoard = (size, board) => {
   }
   return array
 }
+
+export const isBoardBlank = board => {
+  for (const row of board) {
+    if (row.filter(cell => cell === 'on').length >= 1) {
+      return false
+    }
+  }
+  return true
+}

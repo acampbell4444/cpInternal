@@ -4,7 +4,8 @@ import { DropdownButton, MenuItem } from 'react-bootstrap'
 
 export default class extends Component {
   render() {
-    const { nextStep, toggleClass, tableObject, clearTheBoard, resetRand, autoPl, autoPlayOn, frozenTable, changeActiveSize, boardSize } = this.props
+    const { nextStep, toggleClass, tableObject, clearTheBoard, resetRand, autoPl, autoPlayOn, frozenTable, changeActiveSize, boardSize, allOff } = this.props
+    console.log('=>', allOff)
     return (
       <div className='conwayCanvas'>
       <div id='conwayFrame'>
@@ -30,11 +31,11 @@ export default class extends Component {
         <div className='center' id='buttons'>
           <button className='btn btn-success conButt'
             onClick={ nextStep }
-            disabled={frozenTable}
+            disabled={frozenTable||allOff}
           >Next Frame
           </button>
           {
-            !autoPlayOn&&(<button className='btn btn-info conButt' disabled={frozenTable} onClick={e => autoPl(true, nextStep) }>Enable Auto-Play</button>)
+            !autoPlayOn&&(<button className='btn btn-info conButt' disabled={frozenTable||allOff} onClick={e => autoPl(true, nextStep) }>Enable Auto-Play</button>)
           }
           {
             autoPlayOn&&(<button className='btn btn-danger conButt' disabled={frozenTable} onClick={e => autoPl(false) }>Turn Auto-Play Off</button>)
@@ -43,7 +44,9 @@ export default class extends Component {
             onClick={e => resetRand(tableObject.length, tableObject[0].length) }>Reset Random
           </button>
           <button className='btn btn-primary conButt'
-            onClick={e => clearTheBoard(tableObject.length, tableObject[0].length) }>Clear Board
+                  onClick={e => clearTheBoard(tableObject.length, tableObject[0].length) }
+                  disabled={allOff}
+          >Clear Board
           </button>
           <DropdownButton title="Resize the Board" className='btn btn-danger' id='resizeDropdown'>
             <MenuItem eventKey="1" active={boardSize==='small'} onClick={e => changeActiveSize('small', tableObject)}>Small (12 X 12)</MenuItem>

@@ -1,0 +1,31 @@
+input[name="blogContent"]  {
+  height: 400px;
+  width: 600px;
+  margin-left: 14px;
+}
+
+input[name="blogTitle"]  {
+  width: 400px;
+  margin-left: 14px;
+  margin-bottom: 20px;
+}
+
+#newBlogCanvas {
+  padding: 10%;
+}
+
+#submitBlog {
+	margin-top: 3%;
+}
+
+.blogLabels {
+	margin: 0 0 14px 15px;
+	font-weight: 900;
+}
+
+#newBlogHeader {
+	text-align: center;
+	font-weight: 800;
+	font-size: 30px;
+	margin-bottom: 50px;
+}
