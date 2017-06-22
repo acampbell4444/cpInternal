@@ -6,6 +6,7 @@ const rootReducer = combineReducers({
   user: require('./user').default,
   conway: require('./conway').default,
   slidePuzzle: require('./slidePuzzle').default,
+  blog: require('./blog').default,
   form: formReducer
 })
 

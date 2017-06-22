@@ -1,13 +1,11 @@
-input[name="blogContent"]  {
-  height: 400px;
+textarea[name="blogContent"]  {
   width: 600px;
-  margin-left: 14px;
+  height: 400px;
 }
 
 input[name="blogTitle"]  {
   width: 400px;
-  margin-left: 14px;
-  margin-bottom: 20px;
+  margin-bottom: 70px;
 }
 
 #newBlogCanvas {
@@ -19,7 +17,7 @@ input[name="blogTitle"]  {
 }
 
 .blogLabels {
-	margin: 0 0 14px 15px;
+	margin-bottom: 15px;
 	font-weight: 900;
 }
 

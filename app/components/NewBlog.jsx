@@ -11,7 +11,7 @@ export default class extends React.Component {
     const { handleSubmit } = this.props
     return (
       <div id="newBlogCanvas">
-        <p id='newBlogHeader'>New Blog</p>
+        <p id='newBlogHeader'>Create New Blog</p>
         <form onSubmit={handleSubmit}>
           <Field name="blogTitle" type="text" className='blogField'
                  component={renderField} label="Title"
@@ -32,14 +32,24 @@ export default class extends React.Component {
 }
 
 const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
-  <div>
-    <div className='row'>
-      <div className='blogLabels'>{label}</div>
-      <div><input {...input} type={type}/>
+  <div className='blogRender'>
+    {
+      label==='Title'&&(
         <div>
+        <div className='blogLabels'>{label}</div>
+          <input {...input} type={ type }/>
           {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
         </div>
-      </div>
-    </div>
+      )
+    }
+    {
+      label==='Content'&&(
+        <div>
+        <div className='blogLabels'>{label}</div>
+          <textarea {...input} type={ type }/>
+          {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+        </div>
+      )
+    }
   </div>
 )
