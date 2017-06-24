@@ -29,4 +29,15 @@ export const createNewBlog = blog => dispatch =>
     console.error(err)
   )
 
+  export const uploadBlogPhoto = photo => dispatch => {
+    let imageFormData = new FormData();
+    imageFormData.append('imageFile', photo);
+  axios.post('/api/blogs/photos', imageFormData)
+  .then((res) =>
+    console.log('photoUploaded')
+  )
+  .catch(err =>
+    console.error(err)
+  )}
+
 export default reducer

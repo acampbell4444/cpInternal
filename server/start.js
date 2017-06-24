@@ -54,6 +54,7 @@ module.exports = app
 
   // BootStrap
   .use('/bootstrap', express.static(join(__dirname, '../node_modules/bootstrap/dist')))
+  .use('/react-images-uploader', express.static(join(__dirname, '../node_modules/react-images-uploader/styles')))
 
   // Serve our api - ./api also requires in ../db, which syncs with our database
   .use('/api', require('./api'))
