@@ -2,9 +2,10 @@
 
 const db = require('APP/db')
 const Blog = db.model('blogs')
-let multiparty = require('multiparty');
-let fs = require('fs');
-
+const multiparty = require('multiparty')
+const fs = require('fs')
+const path = require('path')
+const {resolve, join} = require('path')
 
 module.exports = require('express').Router()
   .get('/',
@@ -22,28 +23,20 @@ module.exports = require('express').Router()
        saveImage(req, res)
   )
 
-  function saveImage(req, res) {
-  let form = new multiparty.Form();
+function saveImage(req, res) {
+  const form = new multiparty.Form()
   form.parse(req, (err, fields, files) => {
-    let {path: tempPath, originalFilename} = files.imageFile[0];
-    let copyToPath = "/images/" + originalFilename;
+    if (err) console.error(err)
+    const {path: tempPath, originalFilename} = files.imageFile[0]
+    const copyToPath = path.join('images', originalFilename)
     fs.readFile(tempPath, (err, data) => {
-      // make copy of image to new location
-      fs.writeFile(__dirname + copyToPath, data, (err) => {
-        // delete temp image
+      if (err) console.error(err)
+      fs.writeFile(path.join(__dirname, copyToPath), data, (err) => {
+        if (err) console.error(err)
         fs.unlink(tempPath, () => {
-          res.send("File uploaded to: " + copyToPath);
+          res.send('File uploaded to: ' + copyToPath)
         })
       })
     })
   })
 }
-
-    
-
-
-
-
-
-
-  
