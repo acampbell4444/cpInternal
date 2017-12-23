@@ -8,12 +8,31 @@ export default class extends React.Component {
   }
 
   render() {
+    const { allBlogs, handleBlogClick } = this.props
     return (
       <div>
-        <p>All Blogs</p>
-        <Link to='/blogs/new'>
-          Create a New Blog
-        </Link>
+        <div id='allBlogHeader'>
+          <span id='allBlogTitle'>All Blogs</span>
+          <Link to='/blogs/new'>
+            <button className='btn-sm btn-success' id='createBlog'>
+              <span className='glyphicon glyphicon-plus' id='newBlogGlyphicon'></span>
+              Create
+            </button>
+          </Link>
+        </div>
+        <ol>
+          {
+            allBlogs.map((blog, idx) =>
+              <li className='indivBlogs'
+                  key={idx} 
+              >
+                <Link to='/blog' className='blogList' 
+                   onClick={e => handleBlogClick(blog.id)}>{blog.title}
+                </Link>
+              </li>
+            )
+          }
+        </ol>
       </div>
     )
   }

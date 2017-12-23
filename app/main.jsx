@@ -17,9 +17,11 @@ import ConwaysContainer from './containers/ConwaysContainer'
 import SlidePuzzleContainer from './containers/SlidePuzzleContainer'
 import AllBlogsContainer from './containers/AllBlogsContainer'
 import NewBlogContainer from './containers/NewBlogContainer'
+import BlogContainer from './containers/BlogContainer'
 
 import { whoami } from './reducers/auth'
 import { fetchAllUsers } from './reducers/user'
+import { fetchAllBlogs } from './reducers/blog'
 
 const BlogFolio = connect(
   ({ auth }) => ({ user: auth })
@@ -38,7 +40,7 @@ const onConwayEnter = () => store.dispatch(whoami())
 const onSlidePuzzleEnter = () => store.dispatch(whoami())
 const onBlogEnter = () => {
   store.dispatch(whoami())
-  // store.dispatch(fetchAllBlogs())
+  store.dispatch(fetchAllBlogs())
 }
 
 render(
@@ -53,6 +55,7 @@ render(
         <Route path='/slidePuzzle' component={SlidePuzzleContainer} onEnter={onSlidePuzzleEnter} />
         <Route path='/blogs' component={AllBlogsContainer} onEnter={onBlogEnter} />
         <Route path='/blogs/new' component={NewBlogContainer} />
+        <Route path='/blog' component={BlogContainer} />
       </Route>
       <Route path='*' component={NotFound} />
     </Router>

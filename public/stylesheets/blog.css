@@ -27,3 +27,48 @@ input[name="blogTitle"]  {
 	font-size: 30px;
 	margin-bottom: 50px;
 }
+
+.blogList {
+	display: block;
+}
+
+#newBlogHeader {
+	font-weight: bold;
+	color: green;
+}
+
+#uploadPicPreview {
+	height: 100px;
+	width: 100px;
+	display: inline-block;
+}
+
+#allBlogTitle {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 25px;
+}
+
+.indivBlogs {
+	margin: 20px;
+}
+
+#createBlog {
+
+}
+
+#newBlogGlyphicon {
+	margin-right: 15px;
+}
+
+#allBlogHeader{
+	margin-top: 20px;
+}
+
+
+
+
+
+
+

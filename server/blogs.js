@@ -13,6 +13,11 @@ module.exports = require('express').Router()
       Blog.findAll()
         .then(blogs => res.json(blogs))
         .catch(next))
+  .get('/:id',
+    (req, res, next) =>
+      Blog.findById(req.params.id)
+      .then(blog => res.json(blog))
+      .catch(next))
   .post('/',
     (req, res, next) =>
       Blog.create(req.body)

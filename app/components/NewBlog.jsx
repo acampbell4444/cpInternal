@@ -1,7 +1,9 @@
 import { Field, reduxForm } from 'redux-form'
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
+import { maxLength15, required } from '../utilities/customValidations'
 
-export default class extends React.Component {
+export class AddBlog extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -37,39 +39,55 @@ export default class extends React.Component {
     const {imagePreviewUrl} = this.state
     let $imagePreview = null
     if (imagePreviewUrl) {
-      $imagePreview = (<img src={imagePreviewUrl} />)
+      $imagePreview = (<img src={imagePreviewUrl}
+                        id='uploadPicPreview'
+                      />)
     }
 
-    const { handleSubmit, handleUploadSubmit } = this.props
+    const { handleSubmit, handleUploadSubmit, valid } = this.props
     return (
       <div id="newBlogCanvas">
         <p id='newBlogHeader'>Create New Blog</p>
         <form onSubmit={handleSubmit}>
           <Field name="blogTitle" type="text" className='blogField'
                  component={renderField} label="Title"
-                 // validate={ [maxLength15, required, noRepeatUserName] }
+                 validate={ [maxLength15, required] }
           />
           <Field name="blogContent" type="textarea" className='blogField'
                  component={ renderField } label="Content"
                  id='blogContent'
-                 // validate={ [email, required, noRepeatUserEmail] }
+                 validate={ [required] }
           />
           <div>
-            <button className='btn btn-success' id='submitBlog' type='submit'>Submit New Blog</button>
+            <form onSubmit={this._handleImageSubmit}>
+            <input type="file" onChange={this._handleImageChange} />
+            <button type="submit">Upload Image</button>
+            </form>
+          </div>
+          <div>
+            {$imagePreview}
+          </div>
+          <div>
+            <button className='btn btn-success' 
+                    id='submitBlog' 
+                    type='submit' 
+                    disabled={!valid}>Submit New Blog 
+            </button>
           </div>
         </form>
- <div>
-        <form onSubmit={this._handleImageSubmit}>
-          <input type="file" onChange={this._handleImageChange} />
-          <button type="submit">Upload Image</button>
-        </form>
-        {$imagePreview}
-      </div>
-
       </div>
     )
   }
 }
+
+const BlogForm = reduxForm({
+  form: 'AddBlog'
+})(AddBlog)
+
+export default connect(
+  state => ({}),
+  {AddBlog},
+)(BlogForm)
 
 const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
   <div className='blogRender'>

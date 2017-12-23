@@ -1,13 +1,21 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import AllBlogs from '../components/AllBlogs'
-// import {  } from '../reducers/blog'
+import { fetchBlog } from '../reducers/blog'
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => {
+  const allBlogs = state.blog.allBlogs
+  return {
+    allBlogs
+  }
+}
 
 const mapDispatchToProps = dispatch => (
   {
-
+  handleBlogClick(id) {
+    console.log(id, 'blog clicked')
+    dispatch(fetchBlog(id))
+    },
   }
  )
 
