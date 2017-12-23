@@ -1,8 +1,8 @@
 import axios from 'axios'
 
 const initState = {
-  allBlogs : [],
-  currentBlog : {}
+  allBlogs: [],
+  currentBlog: {}
 }
 
 const reducer = (state=initState, action) => {

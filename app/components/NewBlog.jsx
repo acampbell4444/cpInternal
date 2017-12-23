@@ -68,10 +68,10 @@ export class AddBlog extends React.Component {
             {$imagePreview}
           </div>
           <div>
-            <button className='btn btn-success' 
-                    id='submitBlog' 
-                    type='submit' 
-                    disabled={!valid}>Submit New Blog 
+            <button className='btn btn-success'
+                    id='submitBlog'
+                    type='submit'
+                    disabled={!valid}>Submit New Blog
             </button>
           </div>
         </form>

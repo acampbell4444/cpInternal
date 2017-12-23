@@ -24,9 +24,9 @@ export default class extends React.Component {
           {
             allBlogs.map((blog, idx) =>
               <li className='indivBlogs'
-                  key={idx} 
+                  key={idx}
               >
-                <Link to='/blog' className='blogList' 
+                <Link to='/blog' className='blogList'
                    onClick={e => handleBlogClick(blog.id)}>{blog.title}
                 </Link>
               </li>

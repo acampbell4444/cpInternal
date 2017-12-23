@@ -8,7 +8,6 @@ const mapStateToProps = state => {
   return {
     currentBlog
   }
-
 }
 
 const mapDispatchToProps = dispatch => ({})

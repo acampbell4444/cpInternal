@@ -12,10 +12,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => (
   {
-  handleBlogClick(id) {
+    handleBlogClick(id) {
     console.log(id, 'blog clicked')
     dispatch(fetchBlog(id))
-    },
+  },
   }
  )
 
