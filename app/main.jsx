@@ -38,6 +38,7 @@ const onUserSignUpEnter = () => store.dispatch(fetchAllUsers())
 const onLoginEnter = () => store.dispatch(fetchAllUsers())
 const onConwayEnter = () => store.dispatch(whoami())
 const onSlidePuzzleEnter = () => store.dispatch(whoami())
+const onNewBlogEnter = () => store.dispatch(whoami())
 const onBlogEnter = () => {
   store.dispatch(whoami())
   store.dispatch(fetchAllBlogs())
@@ -54,7 +55,7 @@ render(
         <Route path='/conways' component={ConwaysContainer} onEnter={onConwayEnter} />
         <Route path='/slidePuzzle' component={SlidePuzzleContainer} onEnter={onSlidePuzzleEnter} />
         <Route path='/blogs' component={AllBlogsContainer} onEnter={onBlogEnter} />
-        <Route path='/blogs/new' component={NewBlogContainer} />
+        <Route path='/blogs/new' component={NewBlogContainer} onEnter={onNewBlogEnter} />
         <Route path='/blog' component={BlogContainer} />
       </Route>
       <Route path='*' component={NotFound} />

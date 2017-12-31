@@ -9,6 +9,9 @@ module.exports = db => db.define('blogs', {
   },
   content: {
     type: STRING
+  },
+  photoFileName: {
+   type: STRING
   }
 })
 

@@ -5,8 +5,10 @@ import { fetchBlog } from '../reducers/blog'
 
 const mapStateToProps = state => {
   const allBlogs = state.blog.allBlogs
+  const userEmail = state.auth.user.email
   return {
-    allBlogs
+    allBlogs,
+    userEmail
   }
 }
 

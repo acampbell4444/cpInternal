@@ -65,6 +65,8 @@ export class AddBlog extends React.Component {
             </form>
           </div>
           <div>
+          <input name='fileName' type='hidden' value={this.state.file.name}/>
+
             {$imagePreview}
           </div>
           <div>

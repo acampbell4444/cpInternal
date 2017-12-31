@@ -8,17 +8,21 @@ export default class extends React.Component {
   }
 
   render() {
-    const { allBlogs, handleBlogClick } = this.props
+    const { allBlogs, handleBlogClick, userEmail } = this.props
     return (
       <div>
         <div id='allBlogHeader'>
           <span id='allBlogTitle'>All Blogs</span>
-          <Link to='/blogs/new'>
-            <button className='btn-sm btn-success' id='createBlog'>
-              <span className='glyphicon glyphicon-plus' id='newBlogGlyphicon'></span>
-              Create
-            </button>
-          </Link>
+           {
+             userEmail==='alancampbell4444@gmail.com'&&(
+               <Link to='/blogs/new'>
+                 <button className='btn-sm btn-success' id='createBlog'>
+                   <span className='glyphicon glyphicon-plus' id='newBlogGlyphicon'></span>
+                     Create
+                 </button>
+               </Link>
+              )
+           }
         </div>
         <ol>
           {

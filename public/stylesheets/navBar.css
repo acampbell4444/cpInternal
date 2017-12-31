@@ -1,0 +1,11 @@
+.navbar,
+.navbar-inverse {
+    background-image: linear-gradient(to bottom,RoyalBlue 0,RoyalBlue 100%) !important; /* override background image gradient w/ flat color */
+    opacity: .8
+}
+
+#basic-nav-dropdown, #navHomeText, #navBlogText {
+	color:orange;
+}
+
+

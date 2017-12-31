@@ -12,7 +12,9 @@ const mapDispatchToProps = dispatch => (
       e.preventDefault()
       const title = e.target.blogTitle.value
       const content = e.target.blogContent.value
-      dispatch(createNewBlog({title, content}))
+      const photoFileName = e.target.fileName.value
+      console.log(photoFileName)
+      dispatch(createNewBlog({title, content, photoFileName}))
     },
     uploadImage(image) {
       dispatch(uploadBlogPhoto(image))

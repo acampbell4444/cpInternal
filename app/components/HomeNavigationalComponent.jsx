@@ -10,13 +10,13 @@ export default function HomeNavigationalComponent({user}) {
       <Navbar inverse collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
-            <Link to='/home'> <p>Home</p> </Link>
+            <Link to='/home'> <p id='navHomeText'>Home</p> </Link>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            <NavItem eventKey={1} onSelect={e => browserHistory.push('/blogs')}>Blogs</NavItem>
+            <NavItem eventKey={1} onSelect={e => browserHistory.push('/blogs')} id='navBlogText'>Blogs</NavItem>
             <NavDropdown eventKey={2} title="Tech Creations" id="basic-nav-dropdown">
               <MenuItem eventKey={2.1}>Random Widgets</MenuItem>
               <NavDropdown eventKey={3} title="Games" id="games-dropdown">

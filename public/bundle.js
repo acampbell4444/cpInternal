@@ -62,6 +62,17 @@
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
 /******/
+/******/ 	// webpack-livereload-plugin
+/******/ 	(function() {
+/******/ 	  if (typeof window === "undefined") { return };
+/******/ 	  var id = "webpack-livereload-plugin-script";
+/******/ 	  if (document.getElementById(id)) { return; }
+/******/ 	  var el = document.createElement("script");
+/******/ 	  el.id = id;
+/******/ 	  el.async = true;
+/******/ 	  el.src = "http://localhost:35729/livereload.js";
+/******/ 	  document.getElementsByTagName("head")[0].appendChild(el);
+/******/ 	}());
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 837);
 /******/ })
@@ -25322,7 +25333,7 @@ function HomeNavigationalComponent(_ref) {
             ' ',
             _react2.default.createElement(
               'p',
-              null,
+              { id: 'navHomeText' },
               'Home'
             ),
             ' '
@@ -25340,7 +25351,7 @@ function HomeNavigationalComponent(_ref) {
             _reactBootstrap.NavItem,
             { eventKey: 1, onSelect: function onSelect(e) {
                 return _reactRouter.browserHistory.push('/blogs');
-              } },
+              }, id: 'navBlogText' },
             'Blogs'
           ),
           _react2.default.createElement(
@@ -25506,8 +25517,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var mapStateToProps = function mapStateToProps(state) {
   var allBlogs = state.blog.allBlogs;
+  var userEmail = state.auth.user.email;
   return {
-    allBlogs: allBlogs
+    allBlogs: allBlogs,
+    userEmail: userEmail
   };
 };
 
@@ -25761,7 +25774,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       e.preventDefault();
       var title = e.target.blogTitle.value;
       var content = e.target.blogContent.value;
-      dispatch((0, _blog.createNewBlog)({ title: title, content: content }));
+      var photoFileName = e.target.fileName.value;
+      console.log(photoFileName);
+      dispatch((0, _blog.createNewBlog)({ title: title, content: content, photoFileName: photoFileName }));
     },
     uploadImage: function uploadImage(image) {
       dispatch((0, _blog.uploadBlogPhoto)(image));
@@ -26909,7 +26924,8 @@ var _class = function (_React$Component) {
     value: function render() {
       var _props = this.props,
           allBlogs = _props.allBlogs,
-          handleBlogClick = _props.handleBlogClick;
+          handleBlogClick = _props.handleBlogClick,
+          userEmail = _props.userEmail;
 
       return _react2.default.createElement(
         'div',
@@ -26922,7 +26938,7 @@ var _class = function (_React$Component) {
             { id: 'allBlogTitle' },
             'All Blogs'
           ),
-          _react2.default.createElement(
+          userEmail === 'alancampbell4444@gmail.com' && _react2.default.createElement(
             _reactRouter.Link,
             { to: '/blogs/new' },
             _react2.default.createElement(
@@ -27551,6 +27567,7 @@ var AddBlog = exports.AddBlog = function (_React$Component) {
           _react2.default.createElement(
             'div',
             null,
+            _react2.default.createElement('input', { name: 'fileName', type: 'hidden', value: this.state.file.name }),
             $imagePreview
           ),
           _react2.default.createElement(
@@ -65819,6 +65836,9 @@ var onConwayEnter = function onConwayEnter() {
 var onSlidePuzzleEnter = function onSlidePuzzleEnter() {
   return _store2.default.dispatch((0, _auth.whoami)());
 };
+var onNewBlogEnter = function onNewBlogEnter() {
+  return _store2.default.dispatch((0, _auth.whoami)());
+};
 var onBlogEnter = function onBlogEnter() {
   _store2.default.dispatch((0, _auth.whoami)());
   _store2.default.dispatch((0, _blog.fetchAllBlogs)());
@@ -65840,7 +65860,7 @@ var onBlogEnter = function onBlogEnter() {
       _react2.default.createElement(_reactRouter.Route, { path: '/conways', component: _ConwaysContainer2.default, onEnter: onConwayEnter }),
       _react2.default.createElement(_reactRouter.Route, { path: '/slidePuzzle', component: _SlidePuzzleContainer2.default, onEnter: onSlidePuzzleEnter }),
       _react2.default.createElement(_reactRouter.Route, { path: '/blogs', component: _AllBlogsContainer2.default, onEnter: onBlogEnter }),
-      _react2.default.createElement(_reactRouter.Route, { path: '/blogs/new', component: _NewBlogContainer2.default }),
+      _react2.default.createElement(_reactRouter.Route, { path: '/blogs/new', component: _NewBlogContainer2.default, onEnter: onNewBlogEnter }),
       _react2.default.createElement(_reactRouter.Route, { path: '/blog', component: _BlogContainer2.default })
     ),
     _react2.default.createElement(_reactRouter.Route, { path: '*', component: _NotFound2.default })
