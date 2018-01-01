@@ -33,7 +33,7 @@ function saveImage(req, res) {
   form.parse(req, (err, fields, files) => {
     if (err) console.error(err)
     const {path: tempPath, originalFilename} = files.imageFile[0]
-    const copyToPath = path.join('images', originalFilename)
+    const copyToPath = path.join('../public/images', originalFilename)
     fs.readFile(tempPath, (err, data) => {
       if (err) console.error(err)
       fs.writeFile(path.join(__dirname, copyToPath), data, (err) => {

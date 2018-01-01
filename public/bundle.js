@@ -27015,7 +27015,10 @@ var _class = function (_Component) {
   _createClass(_class, [{
     key: 'render',
     value: function render() {
-      var currentBlog = this.props.currentBlog;
+      var _props$currentBlog = this.props.currentBlog,
+          title = _props$currentBlog.title,
+          content = _props$currentBlog.content,
+          photoFileName = _props$currentBlog.photoFileName;
 
       return _react2.default.createElement(
         'div',
@@ -27023,8 +27026,16 @@ var _class = function (_Component) {
         _react2.default.createElement(
           'p',
           null,
-          'This is Blog Display'
-        )
+          title
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          content
+        ),
+        _react2.default.createElement('img', { src: '/images/' + photoFileName,
+          id: 'uploadPicPreview'
+        })
       );
     }
   }]);
