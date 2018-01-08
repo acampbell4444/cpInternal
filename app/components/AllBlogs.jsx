@@ -16,9 +16,6 @@ export default class extends React.Component {
           <span className="ripple"></span>
         </span>
       </div>
-
-
-
     )
     // return (
     //   <div>

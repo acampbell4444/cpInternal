@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
 export default class Partition extends Component {
-
   constructor(props) {
     super(props)
     this.state = {}
@@ -11,7 +10,6 @@ export default class Partition extends Component {
   }
 
   render() {
-
     return (
       <div>'Put partition here'</div>
     )

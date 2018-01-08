@@ -57,7 +57,7 @@ render(
         <Route path='/slidePuzzle' component={SlidePuzzleContainer} onEnter={onSlidePuzzleEnter} />
         <Route path='/blogs' component={AllBlogsContainer} onEnter={onBlogEnter} />
         <Route path='/blogs/new' component={NewBlogContainer} onEnter={onNewBlogEnter} />
-        <Route path='/partition' component={PartitionContainer}  />
+        <Route path='/partition' component={PartitionContainer} />
         <Route path='/blog' component={BlogContainer} />
       </Route>
       <Route path='*' component={NotFound} />
