@@ -28,7 +28,6 @@ You might try this:
 
 Then run me again.
 
-  ~ xoxo, bones
 ********************************************************************`
 
 function makeAppSymlink() {

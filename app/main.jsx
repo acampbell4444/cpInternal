@@ -18,6 +18,7 @@ import SlidePuzzleContainer from './containers/SlidePuzzleContainer'
 import AllBlogsContainer from './containers/AllBlogsContainer'
 import NewBlogContainer from './containers/NewBlogContainer'
 import BlogContainer from './containers/BlogContainer'
+import PartitionContainer from './containers/PartitionContainer'
 
 import { whoami } from './reducers/auth'
 import { fetchAllUsers } from './reducers/user'
@@ -56,6 +57,7 @@ render(
         <Route path='/slidePuzzle' component={SlidePuzzleContainer} onEnter={onSlidePuzzleEnter} />
         <Route path='/blogs' component={AllBlogsContainer} onEnter={onBlogEnter} />
         <Route path='/blogs/new' component={NewBlogContainer} onEnter={onNewBlogEnter} />
+        <Route path='/partition' component={PartitionContainer}  />
         <Route path='/blog' component={BlogContainer} />
       </Route>
       <Route path='*' component={NotFound} />

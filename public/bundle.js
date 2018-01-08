@@ -26929,47 +26929,48 @@ var _class = function (_React$Component) {
 
       return _react2.default.createElement(
         'div',
-        null,
+        { id: 'blogCanvas' },
         _react2.default.createElement(
-          'div',
-          { id: 'allBlogHeader' },
+          'span',
+          { id: 'rip' },
           _react2.default.createElement(
-            'span',
-            { id: 'allBlogTitle' },
-            'All Blogs'
+            'h1',
+            { id: 'tit' },
+            'Blogs'
           ),
-          userEmail === 'alancampbell4444@gmail.com' && _react2.default.createElement(
-            _reactRouter.Link,
-            { to: '/blogs/new' },
-            _react2.default.createElement(
-              'button',
-              { className: 'btn-sm btn-success', id: 'createBlog' },
-              _react2.default.createElement('span', { className: 'glyphicon glyphicon-plus', id: 'newBlogGlyphicon' }),
-              'Create'
-            )
-          )
-        ),
-        _react2.default.createElement(
-          'ol',
-          null,
-          allBlogs.map(function (blog, idx) {
-            return _react2.default.createElement(
-              'li',
-              { className: 'indivBlogs',
-                key: idx
-              },
-              _react2.default.createElement(
-                _reactRouter.Link,
-                { to: '/blog', className: 'blogList',
-                  onClick: function onClick(e) {
-                    return handleBlogClick(blog.id);
-                  } },
-                blog.title
-              )
-            );
-          })
+          _react2.default.createElement('span', { className: 'ripple' })
         )
       );
+      // return (
+      //   <div>
+      //     <div id='allBlogHeader'>
+      //       <span id='allBlogTitle'>All Blogs</span>
+      //        {
+      //          userEmail==='alancampbell4444@gmail.com'&&(
+      //            <Link to='/blogs/new'>
+      //              <button className='btn-sm btn-success' id='createBlog'>
+      //                <span className='glyphicon glyphicon-plus' id='newBlogGlyphicon'></span>
+      //                  Create
+      //              </button>
+      //            </Link>
+      //           )
+      //        }
+      //     </div>
+      //     <ol>
+      //       {
+      //         allBlogs.map((blog, idx) =>
+      //           <li className='indivBlogs'
+      //               key={idx}
+      //           >
+      //             <Link to='/blog' className='blogList'
+      //                onClick={e => handleBlogClick(blog.id)}>{blog.title}
+      //             </Link>
+      //           </li>
+      //         )
+      //       }
+      //     </ol>
+      //   </div>
+      // )
     }
   }]);
 
@@ -27099,7 +27100,6 @@ var _class = function (_Component) {
           boardSize = _props.boardSize,
           allOff = _props.allOff;
 
-      console.log('=>', allOff);
       return _react2.default.createElement(
         'div',
         { className: 'conwayCanvas' },
@@ -65810,6 +65810,10 @@ var _BlogContainer = __webpack_require__(339);
 
 var _BlogContainer2 = _interopRequireDefault(_BlogContainer);
 
+var _PartitionContainer = __webpack_require__(838);
+
+var _PartitionContainer2 = _interopRequireDefault(_PartitionContainer);
+
 var _auth = __webpack_require__(47);
 
 var _user = __webpack_require__(73);
@@ -65872,11 +65876,109 @@ var onBlogEnter = function onBlogEnter() {
       _react2.default.createElement(_reactRouter.Route, { path: '/slidePuzzle', component: _SlidePuzzleContainer2.default, onEnter: onSlidePuzzleEnter }),
       _react2.default.createElement(_reactRouter.Route, { path: '/blogs', component: _AllBlogsContainer2.default, onEnter: onBlogEnter }),
       _react2.default.createElement(_reactRouter.Route, { path: '/blogs/new', component: _NewBlogContainer2.default, onEnter: onNewBlogEnter }),
+      _react2.default.createElement(_reactRouter.Route, { path: '/partition', component: _PartitionContainer2.default }),
       _react2.default.createElement(_reactRouter.Route, { path: '/blog', component: _BlogContainer2.default })
     ),
     _react2.default.createElement(_reactRouter.Route, { path: '*', component: _NotFound2.default })
   )
 ), document.getElementById('main'));
+
+/***/ }),
+/* 838 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(19);
+
+var _Partition = __webpack_require__(839);
+
+var _Partition2 = _interopRequireDefault(_Partition);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {};
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {};
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Partition2.default);
+
+/***/ }),
+/* 839 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Partition = function (_Component) {
+  _inherits(Partition, _Component);
+
+  function Partition(props) {
+    _classCallCheck(this, Partition);
+
+    var _this = _possibleConstructorReturn(this, (Partition.__proto__ || Object.getPrototypeOf(Partition)).call(this, props));
+
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(Partition, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      console.log('partition did mount');
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+
+      return _react2.default.createElement(
+        'div',
+        null,
+        '\'Put partition here\''
+      );
+    }
+  }]);
+
+  return Partition;
+}(_react.Component);
+
+exports.default = Partition;
+
+
+function funky() {
+  return 'yo';
+}
 
 /***/ })
 /******/ ]);

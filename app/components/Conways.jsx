@@ -5,7 +5,6 @@ import { DropdownButton, MenuItem } from 'react-bootstrap'
 export default class extends Component {
   render() {
     const { nextStep, toggleClass, tableObject, clearTheBoard, resetRand, autoPl, autoPlayOn, frozenTable, changeActiveSize, boardSize, allOff } = this.props
-    console.log('=>', allOff)
     return (
       <div className='conwayCanvas'>
       <div id='conwayFrame'>
