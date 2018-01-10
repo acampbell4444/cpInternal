@@ -1,0 +1,129 @@
+{
+ "name": "Partition Data",
+ "description": "Partition Data",
+ "children": [
+  {
+   "name": "Race", "description": "Race",
+   "children": [
+      {"name": "American Indian or Alaskan Native", "description": "American Indian or Alaskan Native",
+      "children": [{"name":"American Indian or Alaskan Native", "description": "American Indian or Alaskan Native", "size":129}]
+      },
+      {"name": "Asian", "description": "Asian",
+      "children": [{"name":"Asian", "description": "Asian", "size":3759}]
+      },
+      {"name": "Black or African-American", "description": "Black or African-American",
+      "children": [{"name":"Black or African-American", "description": "Black or African-American", "size":2342}]
+      },
+      {"name": "Hispanic", "description": "Hispanic",
+      "children": [{"name":"Hispanic", "description": "Hispanic", "size":2145}]
+      },
+      {"name": "Native Hawaiian or Pacific Islander", "description": "Native Hawaiian or Pacific Islander",
+      "children": [{"name":"Native Hawaiian or Pacific Islander", "description": "Native Hawaiian or Pacific Islander", "size":43}]
+      },
+      {"name": "Race/Ethnicity Unknown", "description": "Race/Ethnicity Unknown",
+      "children": [{"name":"Race/Ethnicity Unknown", "description": "Race/Ethnicity Unknown", "size":1184}]
+      },
+      {"name": "Two or More Races", "description": "Two or More Races",
+      "children": [{"name":"Two or More Races", "description": "Two or More Races", "size":1610}]
+      },
+      {"name": "White", "description": "White",
+      "children": [{"name":"White", "description": "White",  "size":18257}]
+      }
+   ]
+  },
+
+  {
+   "name": "Gender",
+   "description": "Gender",
+   "children": [
+      {"name": "Female", "description": "Female",
+         "children": [{"name": "Female", "description": "Female", "size": 16827}]
+      },
+      {"name": "Male",
+        "description": "Male",
+        "children": [{"name": "Male",  "description": "Male", "size": 12642}]
+     }
+   ]
+  },
+
+  {
+   "name": "Age",
+   "description": "Age",
+   "children": [
+      {"name": "Under 25",  "description": "Under 25",
+      "children": [{"name":"Under 25", "description": "Under 25", "size":20873}]
+      },
+      {"name": "25 and Over", "description": "25 and Over",
+      "children": [{"name":"25 and Over", "description": "25 and Over", "size":8595}]
+     }
+   ]
+  },
+
+  {
+   "name": "Attendance", "description": "Attendance",
+   "children": [
+      {"name": "Full-Time", "description": "Full-Time",
+      "children": [{"name":"Full-Time", "description": "Full-Time", "size":25084}]
+      },
+      {"name": "Part-Time", "description": "Part-Time",
+      "children": [{"name":"Part-Time", "description": "Part-Time", "size":4385}]
+     }
+   ]
+  },
+
+  {
+   "name": "Residency", "description": "Residency",
+   "children": [
+      {"name": "In-State", "description": "In-State",
+      "children": [{"name":"In-State", "description": "In-State", "size":21232}]
+      },
+      {"name": "Out-of-State", "description": "Out-of-State",
+      "children": [{"name":"Out-of-State", "description": "Out-of-State", "size":8237}]
+     }
+   ]
+  },
+
+  {
+   "name": "Enrollment", "description": "Enrollment",
+   "children": [
+      {"name": "Undergraduate", "description": "Undergraduate",
+      "children": [{"name":"Undergraduate", "description": "Undergraduate", "size":18523}]
+      },
+      {"name": "Graduate", "description": "Graduate",
+      "children": [{"name":"Graduate", "description": "Graduate", "size":8427}]
+      },
+      {"name": "Professional", "description": "Professional",
+      "children": [{"name":"Professional", "description": "Professional", "size":2519}]
+     }
+   ]
+  },
+
+  {
+   "name": "Citizenship", "description": "Citizenship",
+   "children": [
+      {"name": "US Citizen", "description": "US Citizen",
+      "children": [{"name":"US Citizen", "description": "US Citizen", "size":27114}]
+      },
+      {"name": "Resident Alien", "description": "Resident Alien",
+      "children": [{"name":"Resident Alien", "description": "Resident Alien", "size":763}]
+      },
+      {"name": "Nonresident Alien", "description": "Nonresident Alien",
+      "children": [{"name":"Nonresident Alien", "description": "Nonresident Alien", "size":1592}]
+     }
+   ]
+  },
+
+  {
+   "name": "Proximity", "description": "Proximity",
+   "children": [
+      {"name": "On-Campus", "description": "On-Campus",
+      "children": [{"name":"On-Campus", "description": "On-Campus", "size":27100}]
+      },
+      {"name": "Off-Campus", "description": "Off-Campus",
+      "children": [{"name":"Off-Campus", "description": "Off-Campus", "size":2369}]
+     }
+   ]
+  }
+
+ ]
+}
