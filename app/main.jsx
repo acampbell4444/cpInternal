@@ -15,6 +15,7 @@ import HomeContainer from './containers/HomeContainer'
 import LoginModalContainer from './containers/LoginModalContainer'
 import SignUpModalContainer from './containers/SignUpModalContainer'
 import WLogIndexContainer from './containers/WLogIndexContainer'
+import AddWeathLogContainer from './containers/AddWeathLogContainer'
 
 import ConwaysContainer from './containers/ConwaysContainer'
 import SlidePuzzleContainer from './containers/SlidePuzzleContainer'
@@ -42,8 +43,13 @@ const onHomeEnter = () => {
 
 const onWLogIndexEnter = () => {
   store.dispatch(whoami())
-  store.dispatch(updateCurrentComponent('weatherLog'));
+  store.dispatch(updateCurrentComponent('weatherLog'))
   store.dispatch(fetchWeatherLogs())
+}
+
+const onAddWeathLogEnter = () => {
+  store.dispatch(whoami())
+  store.dispatch(updateCurrentComponent('weatherLog'))
 }
 
 const onSplashEnter = () => store.dispatch(whoami())
@@ -62,6 +68,7 @@ render(
         <Route path="/home" component={HomeContainer} onEnter={onHomeEnter} />
         <Route path='/showLoginModal' component={LoginModalContainer} onEnter={onLoginEnter}/>
         <Route path='/showSignUpModal' component={SignUpModalContainer} onEnter={onUserSignUpEnter} />
+        <Route path='/showAddWeathLogModal' component={AddWeathLogContainer} onEnter={onAddWeathLogEnter} />
         <Route path='/conways' component={ConwaysContainer} onEnter={onConwayEnter} />
         <Route path='/slidePuzzle' component={SlidePuzzleContainer} onEnter={onSlidePuzzleEnter} />
         <Route path='/partition' component={PartitionContainer} />

@@ -14,11 +14,11 @@ module.exports = require('express').Router()
           res.json(logs)
       })
         .catch(next))
-  // .post('/',
-  //   (req, res, next) =>
-  //     User.create(req.body)
-  //     .then(user => res.status(201).json(user))
-  //     .catch(next))
+  .post('/',
+    (req, res, next) =>
+      WeatherLog.create(req.body)
+      .then(log => res.status(201).json(log))
+      .catch(next))
   // .get('/:id',
   //   mustBeLoggedIn,
   //   (req, res, next) =>

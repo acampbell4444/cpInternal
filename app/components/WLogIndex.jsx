@@ -3,31 +3,19 @@ import Splash from './Splash'
 import ReactTable from 'react-table'
 import 'react-table/react-table.css'
 import { makeData, Logo, Tips } from "./Utils";
+import { browserHistory } from 'react-router'
 import matchSorter from 'match-sorter'
 var dateFormat = require('dateformat');
 
 export default class Home extends Component {
   constructor(props) {
     super();
-    this.state = {
-      //data: makeData()
-      data:    
-        [
-          { firstName: 'alan',
-          lastName: 'campbell',
-          age: 22,
-          visits: 4,
-          progress:22,
-          status:'good'
-          }
-        ]
-    }
+    this.state = {}
   }
 
   render() {
-    const { data } = this.state
     const { user, allLogs }= this.props
-    console.log('here?', allLogs)
+    console.log('allWeatherLogs===>', allLogs)
     return (
       <div id='wLogIndexCanvas'>
         {!user&&(
@@ -35,7 +23,12 @@ export default class Home extends Component {
         )}
         {user&&(
           <div>
-          <h1>Weather Log Index</h1>
+          <h1 id='wLogIndexTitle'>Weather Log Index
+            <button 
+              onClick={e => browserHistory.push('/showAddWeathLogModal')}
+              id='addWeatherLogButt'> + Add Log Entry
+            </button>
+          </h1>
           <div>
         <ReactTable
           data={allLogs}
@@ -60,7 +53,7 @@ export default class Home extends Component {
                     row[filter.id].startsWith(filter.value)
                 },             
                 {
-                  Header: "Time",
+                  Header: "Hour (military)",
                   accessor: "time",
                   filterMethod: (filter, row) => row[filter.id].toString().startsWith(filter.value.toString())
                 },

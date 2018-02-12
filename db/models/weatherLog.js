@@ -13,13 +13,13 @@ module.exports = db => db.define('weatherLogs', {
     type: STRING
   },
   location: {
-    type: ENUM('Catalina', 'Newport', 'Tahoe', 'Oceanside')
+    type: STRING
   },
   windSpeed: {
     type: INTEGER
   },
   windDirection: {
-    type: ENUM('N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW')
+    type: STRING
   },
   conditions: {
     type: TEXT

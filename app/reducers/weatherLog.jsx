@@ -1,8 +1,9 @@
 import axios from 'axios'
-//import { browserHistory } from 'react-router'
+import { browserHistory } from 'react-router'
 
 const initState = {
-  allWeatherLogs: []
+  allWeatherLogs: [],
+  lastLog: {}
 }
 
 const reducer = (state=initState, action) => {
@@ -11,6 +12,10 @@ const reducer = (state=initState, action) => {
   switch (action.type) {
   case GET_ALL_WEATHERLOGS:
     newState.allWeatherLogs = action.allWeatherLogs
+    break
+
+  case UPDATE_LAST_LOG:
+    newState.lastLog = action.log
     break
 
   default:
@@ -22,6 +27,11 @@ const reducer = (state=initState, action) => {
 const GET_ALL_WEATHERLOGS = 'GET_ALL_WEATHERLOGS'
 export const getAllLogs = allWeatherLogs => ({
   type: GET_ALL_WEATHERLOGS, allWeatherLogs
+})
+
+const UPDATE_LAST_LOG = 'UPDATE_LAST_LOG'
+export const updateLastLog = log => ({
+  type: UPDATE_LAST_LOG, log
 })
 
 export const fetchWeatherLogs = () =>
@@ -36,19 +46,16 @@ export const fetchWeatherLogs = () =>
     )
 
 
-// export const login = (username, password) =>
-//   dispatch =>
-//     axios.post('/api/auth/login/local',
-//       {username, password})
-//       .then(() => {
-//         dispatch(whoami())
-//         dispatch(loginDidSucceed(true))
-//         browserHistory.push('/home')
-//       })
-//       .catch(() => {
-//         dispatch(loginFail(true))
-//         dispatch(whoami())
-//       })
+export const addNewWeathLogEntry = (logEntry) =>
+  dispatch =>
+    axios.post('/api/weatherLogs', logEntry)
+      .then(() => {
+        dispatch(updateLastLog(logEntry))
+        browserHistory.push('/weatherLog')
+      })
+      .catch(() => {
+        browserHistory.push('/weatherLog')
+      })
 
 // export const logout = () =>
 //   dispatch =>
