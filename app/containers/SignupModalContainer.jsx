@@ -3,7 +3,9 @@ import SignupModal from '../components/SignUpModal'
 import { connect } from 'react-redux'
 import { didSignUpSucceed } from '../reducers/user'
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({
+	didSignUpSucc: state.user.didSignUpSucceed
+})
 
 const mapDispatchToProps = dispatch => ({
   changeLoginSuccessState() {

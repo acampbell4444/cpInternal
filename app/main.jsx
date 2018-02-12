@@ -8,57 +8,64 @@ import store from './store'
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
 import NotFound from './components/NotFound'
-import HomeNavigationalComponent from './components/HomeNavigationalComponent'
 
+import HomeNavContainer from './containers/HomeNavContainer'
+import SplashContainer from './containers/SplashContainer'
 import HomeContainer from './containers/HomeContainer'
 import LoginModalContainer from './containers/LoginModalContainer'
 import SignUpModalContainer from './containers/SignUpModalContainer'
+import WLogIndexContainer from './containers/WLogIndexContainer'
+
 import ConwaysContainer from './containers/ConwaysContainer'
 import SlidePuzzleContainer from './containers/SlidePuzzleContainer'
-import AllBlogsContainer from './containers/AllBlogsContainer'
-import NewBlogContainer from './containers/NewBlogContainer'
-import BlogContainer from './containers/BlogContainer'
+
 import PartitionContainer from './containers/PartitionContainer'
 
-import { whoami } from './reducers/auth'
+import { whoami , updateCurrentComponent} from './reducers/auth'
 import { fetchAllUsers } from './reducers/user'
-import { fetchAllBlogs } from './reducers/blog'
+import { fetchWeatherLogs } from './reducers/weatherLog'
 
-const BlogFolio = connect(
+const CaliParasail = connect(
   ({ auth }) => ({ user: auth })
 )(
   ({ user, children }) =>
     <div>
-      <HomeNavigationalComponent user={user}/>
+      <HomeNavContainer user={user}/>
       {children}
     </div>
 )
 
-const onHomeEnter = () => store.dispatch(whoami())
+const onHomeEnter = () => {
+  store.dispatch(whoami())
+  store.dispatch(updateCurrentComponent('home'));
+}
+
+const onWLogIndexEnter = () => {
+  store.dispatch(whoami())
+  store.dispatch(updateCurrentComponent('weatherLog'));
+  store.dispatch(fetchWeatherLogs())
+}
+
+const onSplashEnter = () => store.dispatch(whoami())
 const onUserSignUpEnter = () => store.dispatch(fetchAllUsers())
 const onLoginEnter = () => store.dispatch(fetchAllUsers())
 const onConwayEnter = () => store.dispatch(whoami())
 const onSlidePuzzleEnter = () => store.dispatch(whoami())
-const onNewBlogEnter = () => store.dispatch(whoami())
-const onBlogEnter = () => {
-  store.dispatch(whoami())
-  store.dispatch(fetchAllBlogs())
-}
 
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={BlogFolio}>
+      <Route path="/" component={CaliParasail}>
         <IndexRedirect to="/home" />
+        <Route path="/splash" component={SplashContainer} onEnter={onSplashEnter} />
+        <Route path='/weatherLog' component={WLogIndexContainer} onEnter={onWLogIndexEnter} />
         <Route path="/home" component={HomeContainer} onEnter={onHomeEnter} />
         <Route path='/showLoginModal' component={LoginModalContainer} onEnter={onLoginEnter}/>
         <Route path='/showSignUpModal' component={SignUpModalContainer} onEnter={onUserSignUpEnter} />
         <Route path='/conways' component={ConwaysContainer} onEnter={onConwayEnter} />
         <Route path='/slidePuzzle' component={SlidePuzzleContainer} onEnter={onSlidePuzzleEnter} />
-        <Route path='/blogs' component={AllBlogsContainer} onEnter={onBlogEnter} />
-        <Route path='/blogs/new' component={NewBlogContainer} onEnter={onNewBlogEnter} />
         <Route path='/partition' component={PartitionContainer} />
-        <Route path='/blog' component={BlogContainer} />
+
       </Route>
       <Route path='*' component={NotFound} />
     </Router>

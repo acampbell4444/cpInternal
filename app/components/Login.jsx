@@ -11,14 +11,14 @@ export const Login = ({ login, userEmailList, valid }) => {
     evt.preventDefault()
     login(evt.target.userEmail.value, evt.target.password.value)
   } }>
-    <Field name="userEmail" type="email" label='Login with Email'
+    <Field name="userEmail" type="email" label='Email'
       component={renderField}
       validate={ emailExists}
     />
     <Field name="password" type="password" label='Password'
       component={renderField}
     />
-    <button className='btn btn-success' type="submit" value="Login" disabled={!valid}>Submit</button>
+    <button id='submitLoginForm' className='btn btn-success' type="submit" value="Login" disabled={!valid}>Submit</button>
   </form>
   )
 }
@@ -34,11 +34,10 @@ export default connect(
 
 const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
   <div>
-    <div className='row' id='narrowLogin'>
-      <div className='col-xs-6' id='loginLabel'>{label}</div>
-      <div className='col-xs-6'><input {...input} placeholder={label} type={type}/>
+    <div className='row'>
+      <div><input className='loginInput' {...input} placeholder={label} type={type}/>
         <div className='userSignUpErrors'>
-          {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+          {touched && ((error && <span className='errWarn'>{error}</span>) || (warning && <span className='errWarn'>{warning}</span>))}
         </div>
       </div>
     </div>

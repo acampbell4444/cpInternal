@@ -4,7 +4,8 @@ import { browserHistory } from 'react-router'
 const initState = {
   user: {},
   loginFail: false,
-  loginDidSucceed: false
+  loginDidSucceed: false,
+  currentComponent: ''
 }
 
 const reducer = (state=initState, action) => {
@@ -21,6 +22,10 @@ const reducer = (state=initState, action) => {
 
   case LOGIN_DID_SUCCEED:
     newState.loginDidSucceed = action.bool
+    break
+
+  case SELECTED_COMPONENT:
+    newState.currentComponent = action.componentName
     break
 
   default:
@@ -44,6 +49,11 @@ export const loginDidSucceed = (bool) => ({
   type: LOGIN_DID_SUCCEED, bool
 })
 
+const SELECTED_COMPONENT = 'SELECTED_COMPONENT'
+export const updateCurrentComponent = (componentName) => ({
+  type: SELECTED_COMPONENT, componentName
+})
+
 export const login = (username, password) =>
   dispatch =>
     axios.post('/api/auth/login/local',
@@ -51,6 +61,7 @@ export const login = (username, password) =>
       .then(() => {
         dispatch(whoami())
         dispatch(loginDidSucceed(true))
+        browserHistory.push('/home')
       })
       .catch(() => {
         dispatch(loginFail(true))

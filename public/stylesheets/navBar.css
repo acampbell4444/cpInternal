@@ -1,11 +1,23 @@
 .navbar,
 .navbar-inverse {
-    background-image: linear-gradient(to bottom,RoyalBlue 0,RoyalBlue 100%) !important; /* override background image gradient w/ flat color */
-    opacity: .8
+  background-color: #3B4148;
+  height: 130px;
+  padding: 2%;
 }
 
-#basic-nav-dropdown, #navHomeText, #navBlogText {
-	color:orange;
+#basic-nav-dropdown, #basic-nav-dropdown,  #navHomeTextfalse, #navWeathLogTextfalse {
+	color:#54CD79;
+	font-size: 33px;
+	font-weight: 900;
 }
+
+.currentComponent, #basic-nav-dropdown:hover, #basic-nav-dropdown:hover,  #navHomeText:hover, #navBlogText:hover,
+
+#navHomeTexttrue, #navWeathLogTexttrue {
+	color:#E65288;
+	font-size: 33px;
+	font-weight: 900;
+}
+
 
 

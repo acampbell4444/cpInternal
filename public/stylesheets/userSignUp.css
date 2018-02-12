@@ -1,11 +1,21 @@
-input[name="username"], input[name="email"], input[name="age"], input[name="createPassword"], input[name="passwordRepeat"]  {
+/*input[name="username"], input[name="email"], input[name="age"], input[name="createPassword"], input[name="passwordRepeat"]  {
 	width: 80%;
 	margin: 1%;
+}*/
+
+.signInput {
+	height: 70px;
+	width: 500px;
+	text-align: center;
+	margin: 3% auto 0 auto;
+	font-size: 30px;
+	background-color: #3B4148;
+	border: none;
+	color: white;
 }
 
 .userSignUpErrors {
-	color: red;
-	font-size: 12px;
+	font-size: 30px;
 }
 
 .userSignUpButtons {
@@ -20,3 +30,33 @@ input[name="username"], input[name="email"], input[name="age"], input[name="crea
 .signUpSuccess {
 	margin: 1%;
 }
+
+#signModHead {
+  color: #E65288;
+  font-size: 40px;
+  font-weight: 900;
+}
+
+#submitSigninForm {
+	margin: 0 2%;
+	width: 500px;
+	height: 60px;
+	font-size: 40px;
+	background-color: #54CD79;
+	border: none;
+	padding-top: 0;
+}
+
+#clearSignInVal {
+	margin: 2% 2% 0 2%;
+	width: 500px;
+	height: 50px;
+	font-size: 30px;
+	background-color: #E65288;
+	border: none;
+	padding-top: 0;
+}
+
+
+
+

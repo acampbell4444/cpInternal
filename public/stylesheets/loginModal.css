@@ -1,8 +1,89 @@
-#narrowLogin {
-	width: 400px;
-	margin: 10px auto;
+#loginMod {
+	width: 1000px;
+	margin: 0 auto;	
 }
 
-#loginLabel {
-	text-align: right;
+#logModHead {
+  color: #54CD79;
+  font-size: 40px;
+  font-weight: 900;
 }
+
+.modal-content {
+  background-color: #2D3338;
+}
+
+input:-webkit-autofill {
+    -webkit-animation-name: autofill;
+    -webkit-animation-fill-mode: both;
+}
+
+@-webkit-keyframes autofill {
+    to {
+        color: #666;
+        background: transparent;
+    }
+}
+
+
+.loginInput {
+	height: 100px;
+	width: 500px;
+	text-align: center;
+	margin-top: 3%;
+	font-size: 30px;
+	background-color: #3B4148;
+	border: none;
+	color: white;
+}
+
+.userSignUpErrors {
+	font-size: 20px;
+	color: #E65288;
+}
+
+#submitLoginForm {
+	margin: 2%;
+	width: 500px;
+	height: 75px;
+	font-size: 40px;
+	background-color: #54CD79;
+}
+
+#closeLoginMod {
+	margin: 2%;
+	width: 100%;
+	height: 60px;
+	font-size: 30px;
+	background-color: transparent;
+	margin: 0 auto;
+	text-align: center;
+	color: white;
+	border: 2px white solid;
+}
+
+#enterAfterLogin {
+  	margin: 2%;
+	width: 100%;
+	height: 60px;
+	font-size: 30px;
+	background-color: #54CD79;
+	margin: 0 auto;
+	text-align: center;
+	color: black;
+	border: 2px white solid;
+}
+
+#closeLoginMod:hover {
+  background-color: #54CD79;
+}
+
+.errWarn {
+	color: #E84F88;
+}
+
+.green {
+	background-color: green;
+}
+
+

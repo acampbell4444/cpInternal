@@ -9,7 +9,7 @@ const SignUpForm = ({ handleSubmit, pristine, reset, submitting, valid, firstPas
   const noRepeatUserEmail = value => noRptUserEmail().includes(value) ? 'That User Email Already Exists' : undefined
 
   return (
-    <div>
+    <div className='center'>
       <form onSubmit={handleSubmit}>
         <Field name="username" type="text"
           component={renderField} label="Name"
@@ -32,8 +32,8 @@ const SignUpForm = ({ handleSubmit, pristine, reset, submitting, valid, firstPas
           validate={ [required, passwordMatch] }
         />
         <div className="userSignUpButtons">
-          <button className='btn btn-success' type="submit" disabled={!valid || didSignUpSucceed}>Submit</button>
-          <button className='btn btn-warning' type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
+          <button  id='submitSigninForm' className='btn btn-success' type="submit" disabled={!valid || didSignUpSucceed}>Submit</button>
+          <button id='clearSignInVal' className='btn btn-warning' type="button" disabled={pristine || submitting} onClick={reset}>Clear All Input</button>
         </div>
       </form>
       <div>
@@ -57,8 +57,7 @@ const SignUpForm = ({ handleSubmit, pristine, reset, submitting, valid, firstPas
 const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
   <div>
     <div className='row'>
-      <div className='col-xs-6 userSignUpLabel'>{label}</div>
-      <div className='col-lg-6 col-xs-6'><input {...input} placeholder={label} type={type}/>
+      <div className='col-12'><input className='signInput' {...input} placeholder={label} type={type}/>
         <div className='userSignUpErrors'>
           {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
         </div>

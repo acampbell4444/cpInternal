@@ -14,7 +14,7 @@ export default class extends React.Component {
   hideModal() {
     this.setState({show: false})
     this.props.loginFail(false)
-    browserHistory.goBack()
+    browserHistory.push('/home')
   }
 
   handleSignUpClick() {
@@ -30,15 +30,11 @@ export default class extends React.Component {
           onHide={this.hideModal}
           bsSize="large"
           aria-labelledby="contained-modal-title-lg"
+          id='loginMod'
         >
           <Modal.Header>
             <Modal.Title>
-              <p className='center'>
-                Login or {' '}
-                  <Link onClick={this.handleSignUpClick}>
-                  Sign Up
-                  </Link>
-              </p>
+              <p id='logModHead' className='center'>Login</p>
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
@@ -71,7 +67,14 @@ export default class extends React.Component {
                 </div>
               )
              }
-            <Button className='button btn btn-danger' onClick={this.hideModal}>Close</Button>
+             <div>
+              {!this.props.loginDidSucceed&&(
+                <button id='closeLoginMod' onClick={this.hideModal}> Go Back</button>
+              )}
+              {this.props.loginDidSucceed&&(
+                <button id='enterAfterLogin' onClick={ e=> browserHistory.push('/home')}> Enter Now!</button>
+              )}
+            </div>
             </div>
           </Modal.Footer>
         </Modal>

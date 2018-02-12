@@ -14,10 +14,17 @@ export default class extends React.Component {
   hideModal() {
     this.setState({show: false})
     this.props.changeLoginSuccessState()
-    browserHistory.goBack()
+    const {didSignUpSucc} = this.props
+    if (didSignUpSucc) {
+      browserHistory.push('/showLoginModal')
+    } else {
+      browserHistory.push('/home')
+    }
   }
 
   render() {
+    const {didSignUpSucc} = this.props
+    console.log('========>',didSignUpSucc)
     return (
       <div>
         <Modal
@@ -28,7 +35,7 @@ export default class extends React.Component {
         >
           <Modal.Header>
             <Modal.Title>
-              <div className='center'>Sign Up</div>
+              <div id='signModHead' className='center'>Sign Up</div>
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
@@ -37,7 +44,7 @@ export default class extends React.Component {
             </div>
           </Modal.Body>
           <Modal.Footer>
-            <Button className='button btn btn-danger' onClick={this.hideModal}>Close</Button>
+            <button id='closeLoginMod' onClick={this.hideModal}>Go Back</button>
           </Modal.Footer>
         </Modal>
       </div>
