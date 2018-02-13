@@ -60,8 +60,9 @@ export default class Home extends Component {
               columns: [
                 {
                   Header: "Date",
+                  headerClassName: 'biggerHeader',
                   accessor: "date",
-                  style: {'font-size': '20px'} ,               
+                  style: {'font-size': '30px'} ,               
                   Cell: row => {
                     if(row.value[5] == 0) {
                       return row.value.slice(6) + '-' + row.value.slice(2,4)
@@ -86,8 +87,9 @@ export default class Home extends Component {
                 },             
                 {
                   Header: "Time",
+                  headerClassName: 'biggerHeader',
                   accessor: "time",
-                  style: {'font-size': '20px'} , 
+                  style: {'font-size': '30px'} , 
                   filterMethod: (filter, row) => row[filter.id].toString().startsWith(filter.value.toString()),
                   sortMethod: (a, b) => {
                     if (timeConverter[a] === timeConverter[b]) {
@@ -97,45 +99,52 @@ export default class Home extends Component {
                   }
                 },
                 {
-                  Header: "Location",
+                  Header: "Locat.",
+                  headerClassName: 'biggerHeader',
                   accessor: "location",
-                  style: {'font-size': '20px'} , 
+                  style: {'font-size': '30px'} , 
                   filterMethod: (filter, row) => row[filter.id].toLowerCase().startsWith(filter.value.toLowerCase())
                 },             
                 {
-                  Header: "Wind Speed",
+                  Header: "Wind mph",
+                  headerClassName: 'biggerHeader',
                   accessor: 'windSpeed',
-                  style: {'font-size': '20px'} , 
+                  style: {'font-size': '23px'} , 
                   filterMethod: (filter, row) => row[filter.id].toString().startsWith(filter.value.toString())
                 },
                 {
-                  Header: "Wind Direction",
+                  Header: "Wind Dir.",
+                  headerClassName: 'biggerHeader',
                   accessor: 'windDirection',
-                  style: {'font-size': '20px'} , 
+                  style: {'font-size': '23px'} , 
                   filterMethod: (filter, row) => row[filter.id].toLowerCase().startsWith(filter.value.toLowerCase())
                 },
                 {
-                  Header: "Conditions",
+                  Header: "Condit.",
+                  headerClassName: 'biggerHeader',
                   accessor: 'conditions',
-                  style: {'font-size': '14px'} , 
+                  style: {'font-size': '20px'} , 
                   filterMethod: (filter, row) => row[filter.id].toLowerCase().startsWith(filter.value.toLowerCase())
                 },
                 {
                   Header: "User",
+                  headerClassName: 'biggerHeader',
                   accessor: 'user_Name',
-                  style: {'font-size': '20px'} , 
+                  style: {'font-size': '30px'} , 
                   filterMethod: (filter, row) => row[filter.id].toLowerCase().startsWith(filter.value.toLowerCase())
                 },
                 {
-                  Header: "Log Entry ID",
+                  Header: "Log ID",
+                  headerClassName: 'biggerHeader',
                   accessor: 'id',
-                  style: {'font-size': '20px'} , 
+                  style: {'font-size': '30px'} , 
                   filterMethod: (filter, row) => row[filter.id].toString().startsWith(filter.value.toLowerCase())
                 },
                 {
                   Header: "User ID",
+                  headerClassName: 'biggerHeader',
                   accessor: 'user_id',
-                  style: {'font-size': '20px'} , 
+                  style: {'font-size': '30px'} , 
                   filterMethod: (filter, row) => row[filter.id].toString().startsWith(filter.value.toLowerCase())
                 }
               ]

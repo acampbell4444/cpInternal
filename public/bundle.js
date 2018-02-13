@@ -46026,7 +46026,7 @@ var AddWLog = exports.AddWLog = function (_React$Component) {
           }),
           _react2.default.createElement(
             _reduxForm.Field,
-            { className: 'wLogInput', name: 'time', label: 'Time', component: 'select' },
+            { className: 'col-12 wLogInput', name: 'time', label: 'Time', component: 'select' },
             _react2.default.createElement(
               'option',
               { value: '8 am' },
@@ -46095,7 +46095,7 @@ var AddWLog = exports.AddWLog = function (_React$Component) {
           ),
           _react2.default.createElement(
             _reduxForm.Field,
-            { className: 'wLogInput', name: 'location', label: 'Location', component: 'select' },
+            { className: 'col-12 wLogInput', name: 'location', label: 'Location', component: 'select' },
             _react2.default.createElement(
               'option',
               { value: 'Catalina' },
@@ -47775,8 +47775,9 @@ var Home = function (_Component) {
               columns: [{
                 columns: [{
                   Header: "Date",
+                  headerClassName: 'biggerHeader',
                   accessor: "date",
-                  style: { 'font-size': '20px' },
+                  style: { 'font-size': '30px' },
                   Cell: function Cell(row) {
                     if (row.value[5] == 0) {
                       return row.value.slice(6) + '-' + row.value.slice(2, 4);
@@ -47800,8 +47801,9 @@ var Home = function (_Component) {
                   }
                 }, {
                   Header: "Time",
+                  headerClassName: 'biggerHeader',
                   accessor: "time",
-                  style: { 'font-size': '20px' },
+                  style: { 'font-size': '30px' },
                   filterMethod: function filterMethod(filter, row) {
                     return row[filter.id].toString().startsWith(filter.value.toString());
                   },
@@ -47812,51 +47814,58 @@ var Home = function (_Component) {
                     return timeConverter[a] > timeConverter[b] ? 1 : -1;
                   }
                 }, {
-                  Header: "Location",
+                  Header: "Locat.",
+                  headerClassName: 'biggerHeader',
                   accessor: "location",
-                  style: { 'font-size': '20px' },
+                  style: { 'font-size': '30px' },
                   filterMethod: function filterMethod(filter, row) {
                     return row[filter.id].toLowerCase().startsWith(filter.value.toLowerCase());
                   }
                 }, {
-                  Header: "Wind Speed",
+                  Header: "Wind mph",
+                  headerClassName: 'biggerHeader',
                   accessor: 'windSpeed',
-                  style: { 'font-size': '20px' },
+                  style: { 'font-size': '23px' },
                   filterMethod: function filterMethod(filter, row) {
                     return row[filter.id].toString().startsWith(filter.value.toString());
                   }
                 }, {
-                  Header: "Wind Direction",
+                  Header: "Wind Dir.",
+                  headerClassName: 'biggerHeader',
                   accessor: 'windDirection',
-                  style: { 'font-size': '20px' },
+                  style: { 'font-size': '23px' },
                   filterMethod: function filterMethod(filter, row) {
                     return row[filter.id].toLowerCase().startsWith(filter.value.toLowerCase());
                   }
                 }, {
-                  Header: "Conditions",
+                  Header: "Condit.",
+                  headerClassName: 'biggerHeader',
                   accessor: 'conditions',
-                  style: { 'font-size': '14px' },
+                  style: { 'font-size': '20px' },
                   filterMethod: function filterMethod(filter, row) {
                     return row[filter.id].toLowerCase().startsWith(filter.value.toLowerCase());
                   }
                 }, {
                   Header: "User",
+                  headerClassName: 'biggerHeader',
                   accessor: 'user_Name',
-                  style: { 'font-size': '20px' },
+                  style: { 'font-size': '30px' },
                   filterMethod: function filterMethod(filter, row) {
                     return row[filter.id].toLowerCase().startsWith(filter.value.toLowerCase());
                   }
                 }, {
-                  Header: "Log Entry ID",
+                  Header: "Log ID",
+                  headerClassName: 'biggerHeader',
                   accessor: 'id',
-                  style: { 'font-size': '20px' },
+                  style: { 'font-size': '30px' },
                   filterMethod: function filterMethod(filter, row) {
                     return row[filter.id].toString().startsWith(filter.value.toLowerCase());
                   }
                 }, {
                   Header: "User ID",
+                  headerClassName: 'biggerHeader',
                   accessor: 'user_id',
-                  style: { 'font-size': '20px' },
+                  style: { 'font-size': '30px' },
                   filterMethod: function filterMethod(filter, row) {
                     return row[filter.id].toString().startsWith(filter.value.toLowerCase());
                   }

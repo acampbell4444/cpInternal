@@ -33,7 +33,7 @@ export class AddWLog extends React.Component {
         component={renderField}
         //validate={ emailExists}
       />
-      <Field className='wLogInput' name="time" label='Time' component='select' >
+      <Field className='col-12 wLogInput' name="time" label='Time' component='select' >
           <option value='8 am'>8 am</option>
           <option value='9 am'>9 am</option>
           <option value='10 am'>10 am</option>
@@ -48,7 +48,7 @@ export class AddWLog extends React.Component {
           <option value='7 pm'>7 pm</option>
           <option value='8 pm'>8 pm</option>
       </Field>
-      <Field className='wLogInput' name="location" label='Location' component='select'>
+      <Field className='col-12 wLogInput' name="location" label='Location' component='select'>
           <option value='Catalina'>Catalina</option>
           <option value='Balboa'>Balboa</option>
           <option value='Tahoe'>Tahoe</option>

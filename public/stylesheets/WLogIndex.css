@@ -7,6 +7,10 @@
 	font-size: 40px;
 }
 
+.biggerHeader {
+	font-size: 30px;
+}
+
 #addWeatherLogButt {
 	font-size: 30px;
 	font-weight: 900;
@@ -30,6 +34,8 @@
 	background-color: white;
 	border: none;
 	color: black;
+	display: block;
+	margin: 12px auto;
 }
 
 #submitWLog {
