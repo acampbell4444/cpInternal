@@ -33,7 +33,7 @@ export class AddWLog extends React.Component {
         component={renderField}
         //validate={ emailExists}
       />
-      <Field className='loginInput' name="time" label='Time' component='select' >
+      <Field className='wLogInput' name="time" label='Time' component='select' >
           <option value='8 am'>8 am</option>
           <option value='9 am'>9 am</option>
           <option value='10 am'>10 am</option>
@@ -48,7 +48,7 @@ export class AddWLog extends React.Component {
           <option value='7 pm'>7 pm</option>
           <option value='8 pm'>8 pm</option>
       </Field>
-      <Field className='loginInput' name="location" label='Location' component='select'>
+      <Field className='wLogInput' name="location" label='Location' component='select'>
           <option value='Catalina'>Catalina</option>
           <option value='Balboa'>Balboa</option>
           <option value='Tahoe'>Tahoe</option>
@@ -57,7 +57,7 @@ export class AddWLog extends React.Component {
       <Field name="windSpeed" type="number" label='Wind Speed' validate={[required]}
         component={renderField}
       />
-      <Field className='loginInput' name="windDirection" label='Wind Direction' component='select'>
+      <Field className='wLogInput' name="windDirection" label='Wind Direction' component='select'>
           <option value='N'>N</option>
           <option value='NE'>NE</option>
           <option value='E'>E</option>
@@ -66,11 +66,11 @@ export class AddWLog extends React.Component {
           <option value='SW'>SW</option>
           <option value='W'>W</option>
           <option value='NW'>NW</option>
-      </Field>
+      </Field><div></div>
       <Field name="conditions" type="text" label='Conditions'
         component={renderField}
       />
-      <button id='submitLoginForm' className='btn btn-success' type="submit" disabled={!valid}
+      <button id='submitWLog' className='btn btn-success' type="submit" disabled={!valid}
       >Submit</button>
     </form>
   </div>
@@ -90,7 +90,7 @@ export default connect(
 const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
   <div>
     <div className='row'>
-      <div><input className='loginInput' {...input} placeholder={label} type={type} />
+      <div><input className='wLogInput' {...input} placeholder={label} type={type} />
         <div className='userSignUpErrors'>
           {touched && ((error && <span className='errWarn'>{error}</span>) || (warning && <span className='errWarn'>{warning}</span>))}
         </div>

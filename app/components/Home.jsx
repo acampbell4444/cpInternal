@@ -7,7 +7,7 @@ export default class Home extends Component {
   render() {
     const { user }= this.props
     return (
-      <div>
+      <div className='container-fluid'>
         {user.user&&(
           <div>
             <div>

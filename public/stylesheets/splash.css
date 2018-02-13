@@ -5,6 +5,10 @@
 	text-align: center;
 }
 
+.splashBack {
+  background-color: #2D3338;
+}
+
 #loginContainer {
   padding: 5%;
   height: 400px;

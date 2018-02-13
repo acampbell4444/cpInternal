@@ -15111,7 +15111,7 @@ var Splash = function (_Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: 'container-fluid' },
+        { className: 'container-fluid splashBack' },
         _react2.default.createElement(
           'h1',
           { id: 'splashTitle' },
@@ -46026,7 +46026,7 @@ var AddWLog = exports.AddWLog = function (_React$Component) {
           }),
           _react2.default.createElement(
             _reduxForm.Field,
-            { className: 'loginInput', name: 'time', label: 'Time', component: 'select' },
+            { className: 'wLogInput', name: 'time', label: 'Time', component: 'select' },
             _react2.default.createElement(
               'option',
               { value: '8 am' },
@@ -46095,7 +46095,7 @@ var AddWLog = exports.AddWLog = function (_React$Component) {
           ),
           _react2.default.createElement(
             _reduxForm.Field,
-            { className: 'loginInput', name: 'location', label: 'Location', component: 'select' },
+            { className: 'wLogInput', name: 'location', label: 'Location', component: 'select' },
             _react2.default.createElement(
               'option',
               { value: 'Catalina' },
@@ -46122,7 +46122,7 @@ var AddWLog = exports.AddWLog = function (_React$Component) {
           }),
           _react2.default.createElement(
             _reduxForm.Field,
-            { className: 'loginInput', name: 'windDirection', label: 'Wind Direction', component: 'select' },
+            { className: 'wLogInput', name: 'windDirection', label: 'Wind Direction', component: 'select' },
             _react2.default.createElement(
               'option',
               { value: 'N' },
@@ -46164,12 +46164,13 @@ var AddWLog = exports.AddWLog = function (_React$Component) {
               'NW'
             )
           ),
+          _react2.default.createElement('div', null),
           _react2.default.createElement(_reduxForm.Field, { name: 'conditions', type: 'text', label: 'Conditions',
             component: renderField
           }),
           _react2.default.createElement(
             'button',
-            { id: 'submitLoginForm', className: 'btn btn-success', type: 'submit', disabled: !valid
+            { id: 'submitWLog', className: 'btn btn-success', type: 'submit', disabled: !valid
             },
             'Submit'
           )
@@ -46208,7 +46209,7 @@ var renderField = function renderField(_ref) {
       _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement('input', _extends({ className: 'loginInput' }, input, { placeholder: label, type: type })),
+        _react2.default.createElement('input', _extends({ className: 'wLogInput' }, input, { placeholder: label, type: type })),
         _react2.default.createElement(
           'div',
           { className: 'userSignUpErrors' },
@@ -46564,7 +46565,7 @@ var Home = function (_Component) {
 
       return _react2.default.createElement(
         'div',
-        null,
+        { className: 'container-fluid' },
         user.user && _react2.default.createElement(
           'div',
           null,

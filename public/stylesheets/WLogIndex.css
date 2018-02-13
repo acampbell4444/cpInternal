@@ -20,3 +20,23 @@
 	color: black;
 	background-color: #59CC7C;
 }
+
+.wLogInput {
+    height: 55px;
+	width: 400px;
+	margin-top: 3%;
+	font-size: 30px;
+	padding: 1%;
+	background-color: white;
+	border: none;
+	color: black;
+}
+
+#submitWLog {
+  	margin: 2%;
+	width: 400px;
+	height: 65px;
+	font-size: 40px;
+	background-color: #54CD79;
+	margin-top: 7%;
+}

@@ -9,7 +9,7 @@ export default class Splash extends Component {
 
   render() {
     return (
-      <div className="container-fluid">
+      <div className="container-fluid splashBack">
         <h1 id='splashTitle'>California Parasail</h1> 
         <div className="row">
           <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6" id='loginContainer'>
