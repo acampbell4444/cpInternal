@@ -41,7 +41,7 @@ export default class Home extends Component {
                         console.log('og', rowInfo.original.user_id)
                         console.log('uz', user)
 
-                        if((column.Header == 'Log Entry ID' || column.Header == 'User ID')&& (user.id ===  rowInfo.original.user_id)){
+                        if((column.Header == 'User')&& (user.id ===  rowInfo.original.user_id)){
                           if (confirm('Would you like delete this entry, ' + user.name + '?')) {
                             this.props.removeLogEntry(rowInfo.original.id)
                             this.props.getAllLogs()
@@ -133,20 +133,20 @@ export default class Home extends Component {
                   style: {'font-size': '30px'} , 
                   filterMethod: (filter, row) => row[filter.id].toLowerCase().startsWith(filter.value.toLowerCase())
                 },
-                {
-                  Header: "Log ID",
-                  headerClassName: 'biggerHeader',
-                  accessor: 'id',
-                  style: {'font-size': '30px'} , 
-                  filterMethod: (filter, row) => row[filter.id].toString().startsWith(filter.value.toLowerCase())
-                },
-                {
-                  Header: "User ID",
-                  headerClassName: 'biggerHeader',
-                  accessor: 'user_id',
-                  style: {'font-size': '30px'} , 
-                  filterMethod: (filter, row) => row[filter.id].toString().startsWith(filter.value.toLowerCase())
-                }
+                // {
+                //   Header: "Log ID",
+                //   headerClassName: 'biggerHeader',
+                //   accessor: 'id',
+                //   style: {'font-size': '30px'} , 
+                //   filterMethod: (filter, row) => row[filter.id].toString().startsWith(filter.value.toLowerCase())
+                // },
+                // {
+                //   Header: "User ID",
+                //   headerClassName: 'biggerHeader',
+                //   accessor: 'user_id',
+                //   style: {'font-size': '30px'} , 
+                //   filterMethod: (filter, row) => row[filter.id].toString().startsWith(filter.value.toLowerCase())
+                // }
               ]
             }
           ]}

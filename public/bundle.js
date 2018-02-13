@@ -47757,7 +47757,7 @@ var Home = function (_Component) {
                     console.log('og', rowInfo.original.user_id);
                     console.log('uz', user);
 
-                    if ((column.Header == 'Log Entry ID' || column.Header == 'User ID') && user.id === rowInfo.original.user_id) {
+                    if (column.Header == 'User' && user.id === rowInfo.original.user_id) {
                       if (confirm('Would you like delete this entry, ' + user.name + '?')) {
                         _this2.props.removeLogEntry(rowInfo.original.id);
                         _this2.props.getAllLogs();
@@ -47852,22 +47852,6 @@ var Home = function (_Component) {
                   style: { 'font-size': '30px' },
                   filterMethod: function filterMethod(filter, row) {
                     return row[filter.id].toLowerCase().startsWith(filter.value.toLowerCase());
-                  }
-                }, {
-                  Header: "Log ID",
-                  headerClassName: 'biggerHeader',
-                  accessor: 'id',
-                  style: { 'font-size': '30px' },
-                  filterMethod: function filterMethod(filter, row) {
-                    return row[filter.id].toString().startsWith(filter.value.toLowerCase());
-                  }
-                }, {
-                  Header: "User ID",
-                  headerClassName: 'biggerHeader',
-                  accessor: 'user_id',
-                  style: { 'font-size': '30px' },
-                  filterMethod: function filterMethod(filter, row) {
-                    return row[filter.id].toString().startsWith(filter.value.toLowerCase());
                   }
                 }]
               }],
