@@ -6,6 +6,7 @@ import { makeData, Logo, Tips } from "./Utils";
 import { browserHistory } from 'react-router'
 import matchSorter from 'match-sorter'
 var dateFormat = require('dateformat');
+const timeConverter = {'8 am' : 8, '9 am' : 9, '10 am' : 10, '11 am' : 11, '12 pm' : 12, '1 pm' : 13, '2 pm' : 14, '3 pm' : 15, '4 pm' : 16, '5 pm' : 17, '6 pm' : 18, '7 pm' : 19, '8 pm' : 20, }
 
 export default class Home extends Component {
   constructor(props) {
@@ -15,7 +16,6 @@ export default class Home extends Component {
 
   render() {
     const { user, allLogs }= this.props
-    console.log('allWeatherLogs===>', allLogs)
     return (
       <div id='wLogIndexCanvas'>
         {!user&&(
@@ -40,22 +40,39 @@ export default class Home extends Component {
               columns: [
                 {
                   Header: "Date",
-                  accessor: "date",
+                  accessor: "date",                  
+                  Cell: row => {
+                    if(row.value[5] == 0) {
+                      return row.value.slice(6) + '-' + row.value.slice(2,4)
+                    }
+                    return row.value = row.value.slice(5) + '-' + row.value.slice(2,4)
+                  },
                   sortMethod: (a, b) => {
                     if (a === b) {
                       return 0;
                     }
-                    let aDate = new Date(a)
-                    let bDate = new Date(b)
-                    return aDate > bDate ? 1 : -1;
+                    return a > b ? 1 : -1;
                   },
-                  filterMethod: (filter, row) =>
-                    row[filter.id].startsWith(filter.value)
+                  filterMethod: (filter, row) => {
+                    let val = row[filter.id]
+                    if(val[5] == 0) {
+                      val =  val.slice(6) + '-' + val.slice(2,4)
+                    } else {
+                      val = val.slice(5) + '-' + val.slice(2,4)
+                    }
+                    return val.startsWith(filter.value)
+                  },
                 },             
                 {
-                  Header: "Hour (military)",
+                  Header: "Time",
                   accessor: "time",
-                  filterMethod: (filter, row) => row[filter.id].toString().startsWith(filter.value.toString())
+                  filterMethod: (filter, row) => row[filter.id].toString().startsWith(filter.value.toString()),
+                  sortMethod: (a, b) => {
+                    if (timeConverter[a] === timeConverter[b]) {
+                      return 0;
+                    }
+                    return timeConverter[a] > timeConverter[b] ? 1 : -1;
+                  }
                 },
                 {
                   Header: "Location",
@@ -106,6 +123,7 @@ export default class Home extends Component {
     )
   }
 }
+
 
 
 

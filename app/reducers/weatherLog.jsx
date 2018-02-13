@@ -38,7 +38,6 @@ export const fetchWeatherLogs = () =>
   dispatch =>
     axios.get('/api/weatherLogs')
       .then(response => {
-        console.log('res', response)
         const logs = response.data
         dispatch(getAllLogs(logs))
       })

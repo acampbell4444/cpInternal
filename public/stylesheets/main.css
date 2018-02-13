@@ -67,6 +67,11 @@ body {
 	color: red;
 	margin-right: 1%;
 }
+select{
+    text-align-last:center;
+    padding-right: 29px;
+
+}
 
  
 

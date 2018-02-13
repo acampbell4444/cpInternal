@@ -7,7 +7,7 @@ module.exports = db => db.define('weatherLogs', {
     type: STRING
   },
   time: {
-    type: INTEGER
+    type: STRING
   },  
   user_Name: {
     type: STRING

@@ -5,7 +5,6 @@ import AddWLog from '../components/AddWLog'
 const mapStateToProps = state => {
   const user = state.auth.user ? state.auth.user : null
   const lastEntry = state.weatherLog.lastLog ? state.weatherLog.lastLog : {}
-  console.log('########', lastEntry)
   return {
      initialValues: lastEntry
   }
