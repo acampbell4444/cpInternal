@@ -122,12 +122,12 @@ export default class Home extends Component {
                 {
                   Header: "Log Entry ID",
                   accessor: 'id',
-                  filterMethod: (filter, row) => row[filter.id].toLowerCase().startsWith(filter.value.toLowerCase())
+                  filterMethod: (filter, row) => row[filter.id].toString().startsWith(filter.value.toLowerCase())
                 },
                 {
                   Header: "User ID",
                   accessor: 'user_id',
-                  filterMethod: (filter, row) => row[filter.id].toLowerCase().startsWith(filter.value.toLowerCase())
+                  filterMethod: (filter, row) => row[filter.id].toString().startsWith(filter.value.toLowerCase())
                 }
               ]
             }

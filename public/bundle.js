@@ -47842,13 +47842,13 @@ var Home = function (_Component) {
                   Header: "Log Entry ID",
                   accessor: 'id',
                   filterMethod: function filterMethod(filter, row) {
-                    return row[filter.id].toLowerCase().startsWith(filter.value.toLowerCase());
+                    return row[filter.id].toString().startsWith(filter.value.toLowerCase());
                   }
                 }, {
                   Header: "User ID",
                   accessor: 'user_id',
                   filterMethod: function filterMethod(filter, row) {
-                    return row[filter.id].toLowerCase().startsWith(filter.value.toLowerCase());
+                    return row[filter.id].toString().startsWith(filter.value.toLowerCase());
                   }
                 }]
               }],
