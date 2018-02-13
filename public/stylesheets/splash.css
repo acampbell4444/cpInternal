@@ -1,18 +1,23 @@
 #splashTitle {
-	margin-top: 3%;
+	margin-top: 5%;
 	color: white;
 	font-size: 80px;
 	text-align: center;
 }
 
 #loginContainer {
-  padding: 7%;
-  height: 500px;
+  padding: 5%;
+  height: 400px;
+  padding-top: 1%;
+  margin-top: 5%;
+
 }
 
 #signUpContainer {
-  padding: 7%;
-  height: 500px;
+  padding: 5%;
+  height: 400px;
+  padding-top: 1%;
+  margin-top: 5%;
 }
 
 #splashLogin {

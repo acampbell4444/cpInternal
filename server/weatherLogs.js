@@ -19,6 +19,13 @@ module.exports = require('express').Router()
       WeatherLog.create(req.body)
       .then(log => res.status(201).json(log))
       .catch(next))
+  .delete('/:logId', (req,res,next)=>{
+    WeatherLog.destroy({where: {id: req.params.logId}})
+    .then(log=>
+      res.send(req.params.logId)
+    )
+    .catch(next)
+  })
   // .get('/:id',
   //   mustBeLoggedIn,
   //   (req, res, next) =>

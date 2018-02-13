@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router'
 
 const initState = {
   allWeatherLogs: [],
-  lastLog: {}
+  lastLog: {},
 }
 
 const reducer = (state=initState, action) => {
@@ -16,6 +16,10 @@ const reducer = (state=initState, action) => {
 
   case UPDATE_LAST_LOG:
     newState.lastLog = action.log
+    break  
+
+  case UPDATE_RECENT_DELETED:
+    newState.recentlyDeleted = action.id
     break
 
   default:
@@ -32,6 +36,11 @@ export const getAllLogs = allWeatherLogs => ({
 const UPDATE_LAST_LOG = 'UPDATE_LAST_LOG'
 export const updateLastLog = log => ({
   type: UPDATE_LAST_LOG, log
+})
+
+const UPDATE_RECENT_DELETED = 'UPDATE_RECENT_DELETED'
+export const updateRecentDeleted = id => ({
+  type: UPDATE_RECENT_DELETED, id
 })
 
 export const fetchWeatherLogs = () =>
@@ -56,15 +65,17 @@ export const addNewWeathLogEntry = (logEntry) =>
         browserHistory.push('/weatherLog')
       })
 
-// export const logout = () =>
-//   dispatch =>
-//     axios.post('/api/auth/logout')
-//       .then(() => {
-//         dispatch(loginDidSucceed(false))
-//         dispatch(whoami())
-//         browserHistory.push('/home')
-//       })
-//       .catch(() => dispatch(whoami()))
+
+export const deleteLogEntry = (id) => {
+  return (dispatch, getState) => {  
+    return axios.delete('/api/weatherLogs/' + id)
+    .then(logId=>{
+      console.log('justdeleted check type', logId)
+      dispatch(updateRecentDeleted({recentlyDeleted:logId}))
+    })
+    .catch( err => console.error(err))
+  };
+};
 
 // export const whoami = () =>
 //   dispatch =>

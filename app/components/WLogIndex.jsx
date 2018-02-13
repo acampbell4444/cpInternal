@@ -33,6 +33,26 @@ export default class Home extends Component {
         <ReactTable
           data={allLogs}
           filterable
+          getTdProps={(state, rowInfo, column, instance) => {
+                    return {
+                      onClick: (e, handleOriginal) => {
+                        console.log('wtf',column.Header)
+                        console.log('userid', user.id)
+                        console.log('og', rowInfo.original.user_id)
+                        console.log('uz', user)
+
+                        if((column.Header == 'Log Entry ID' || column.Header == 'User ID')&& (user.id ===  rowInfo.original.user_id)){
+                          if (confirm('Would you like delete this entry, ' + user.name + '?')) {
+                            this.props.removeLogEntry(rowInfo.original.id)
+                            this.props.getAllLogs()
+                          } 
+                        }
+                        if (handleOriginal) {
+                          handleOriginal()
+                        }
+                      }
+                    }
+                  }}
           defaultFilterMethod={(filter, row) =>
             String(row[filter.id]) === filter.value}
           columns={[
@@ -97,6 +117,16 @@ export default class Home extends Component {
                 {
                   Header: "User",
                   accessor: 'user_Name',
+                  filterMethod: (filter, row) => row[filter.id].toLowerCase().startsWith(filter.value.toLowerCase())
+                },
+                {
+                  Header: "Log Entry ID",
+                  accessor: 'id',
+                  filterMethod: (filter, row) => row[filter.id].toLowerCase().startsWith(filter.value.toLowerCase())
+                },
+                {
+                  Header: "User ID",
+                  accessor: 'user_id',
                   filterMethod: (filter, row) => row[filter.id].toLowerCase().startsWith(filter.value.toLowerCase())
                 }
               ]
