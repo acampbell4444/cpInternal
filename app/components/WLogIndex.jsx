@@ -60,7 +60,8 @@ export default class Home extends Component {
               columns: [
                 {
                   Header: "Date",
-                  accessor: "date",                  
+                  accessor: "date",
+                  style: {'font-size': '20px'} ,               
                   Cell: row => {
                     if(row.value[5] == 0) {
                       return row.value.slice(6) + '-' + row.value.slice(2,4)
@@ -86,6 +87,7 @@ export default class Home extends Component {
                 {
                   Header: "Time",
                   accessor: "time",
+                  style: {'font-size': '20px'} , 
                   filterMethod: (filter, row) => row[filter.id].toString().startsWith(filter.value.toString()),
                   sortMethod: (a, b) => {
                     if (timeConverter[a] === timeConverter[b]) {
@@ -97,36 +99,43 @@ export default class Home extends Component {
                 {
                   Header: "Location",
                   accessor: "location",
+                  style: {'font-size': '20px'} , 
                   filterMethod: (filter, row) => row[filter.id].toLowerCase().startsWith(filter.value.toLowerCase())
                 },             
                 {
                   Header: "Wind Speed",
                   accessor: 'windSpeed',
+                  style: {'font-size': '20px'} , 
                   filterMethod: (filter, row) => row[filter.id].toString().startsWith(filter.value.toString())
                 },
                 {
                   Header: "Wind Direction",
                   accessor: 'windDirection',
+                  style: {'font-size': '20px'} , 
                   filterMethod: (filter, row) => row[filter.id].toLowerCase().startsWith(filter.value.toLowerCase())
                 },
                 {
                   Header: "Conditions",
                   accessor: 'conditions',
+                  style: {'font-size': '14px'} , 
                   filterMethod: (filter, row) => row[filter.id].toLowerCase().startsWith(filter.value.toLowerCase())
                 },
                 {
                   Header: "User",
                   accessor: 'user_Name',
+                  style: {'font-size': '20px'} , 
                   filterMethod: (filter, row) => row[filter.id].toLowerCase().startsWith(filter.value.toLowerCase())
                 },
                 {
                   Header: "Log Entry ID",
                   accessor: 'id',
+                  style: {'font-size': '20px'} , 
                   filterMethod: (filter, row) => row[filter.id].toString().startsWith(filter.value.toLowerCase())
                 },
                 {
                   Header: "User ID",
                   accessor: 'user_id',
+                  style: {'font-size': '20px'} , 
                   filterMethod: (filter, row) => row[filter.id].toString().startsWith(filter.value.toLowerCase())
                 }
               ]

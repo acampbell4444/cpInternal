@@ -38,13 +38,14 @@
 }
 
 #submitSigninForm {
-	margin: 0 2%;
+	margin: 8% 2% 5% 2%;
 	width: 500px;
 	height: 60px;
 	font-size: 40px;
 	background-color: #54CD79;
 	border: none;
 	padding-top: 0;
+	margin-top: 10%;
 }
 
 #clearSignInVal {

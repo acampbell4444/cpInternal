@@ -46565,7 +46565,7 @@ var Home = function (_Component) {
 
       return _react2.default.createElement(
         'div',
-        { className: 'container-fluid' },
+        { id: 'homeWrap', className: 'container-fluid' },
         user.user && _react2.default.createElement(
           'div',
           null,
@@ -47776,6 +47776,7 @@ var Home = function (_Component) {
                 columns: [{
                   Header: "Date",
                   accessor: "date",
+                  style: { 'font-size': '20px' },
                   Cell: function Cell(row) {
                     if (row.value[5] == 0) {
                       return row.value.slice(6) + '-' + row.value.slice(2, 4);
@@ -47800,6 +47801,7 @@ var Home = function (_Component) {
                 }, {
                   Header: "Time",
                   accessor: "time",
+                  style: { 'font-size': '20px' },
                   filterMethod: function filterMethod(filter, row) {
                     return row[filter.id].toString().startsWith(filter.value.toString());
                   },
@@ -47812,42 +47814,49 @@ var Home = function (_Component) {
                 }, {
                   Header: "Location",
                   accessor: "location",
+                  style: { 'font-size': '20px' },
                   filterMethod: function filterMethod(filter, row) {
                     return row[filter.id].toLowerCase().startsWith(filter.value.toLowerCase());
                   }
                 }, {
                   Header: "Wind Speed",
                   accessor: 'windSpeed',
+                  style: { 'font-size': '20px' },
                   filterMethod: function filterMethod(filter, row) {
                     return row[filter.id].toString().startsWith(filter.value.toString());
                   }
                 }, {
                   Header: "Wind Direction",
                   accessor: 'windDirection',
+                  style: { 'font-size': '20px' },
                   filterMethod: function filterMethod(filter, row) {
                     return row[filter.id].toLowerCase().startsWith(filter.value.toLowerCase());
                   }
                 }, {
                   Header: "Conditions",
                   accessor: 'conditions',
+                  style: { 'font-size': '14px' },
                   filterMethod: function filterMethod(filter, row) {
                     return row[filter.id].toLowerCase().startsWith(filter.value.toLowerCase());
                   }
                 }, {
                   Header: "User",
                   accessor: 'user_Name',
+                  style: { 'font-size': '20px' },
                   filterMethod: function filterMethod(filter, row) {
                     return row[filter.id].toLowerCase().startsWith(filter.value.toLowerCase());
                   }
                 }, {
                   Header: "Log Entry ID",
                   accessor: 'id',
+                  style: { 'font-size': '20px' },
                   filterMethod: function filterMethod(filter, row) {
                     return row[filter.id].toString().startsWith(filter.value.toLowerCase());
                   }
                 }, {
                   Header: "User ID",
                   accessor: 'user_id',
+                  style: { 'font-size': '20px' },
                   filterMethod: function filterMethod(filter, row) {
                     return row[filter.id].toString().startsWith(filter.value.toLowerCase());
                   }
